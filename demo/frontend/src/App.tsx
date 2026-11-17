@@ -1,30 +1,14 @@
 import { useEffect, useState } from "react";
-import demoExamples from "./demoExamples.json";
 import MoleculeViewer from "./MoleculeViewer";
 
 type Connection = "checking" | "online" | "offline";
 type Prediction = {
   status: string;
   prediction_pKd: number;
-  known_training_pair: boolean;
-  protein_in_original_davis: boolean;
-  compound_in_original_davis: boolean;
-  seed_prediction_std: number;
-  notice: string;
-  geometry_used?: boolean;
-  geometry_source?: string;
-  calibrated_2d_pKd?: number;
-  sample_id?: string;
+  geometry_used: boolean;
+  sample_id: string;
 };
-
 type NativeExample = { sample_id: string; smiles: string; sequence: string; source: string };
-
-type Example = {
-  id: string; label: string; target: string; smiles: string;
-  sequence: string; source: string;
-};
-const EXAMPLES: Example[] = demoExamples;
-const FIRST_EXAMPLE = EXAMPLES[0]?.id ?? "";
 
 async function api<T>(path: string, body?: object): Promise<T> {
   let response: Response;
@@ -51,14 +35,12 @@ function cleanSequence(raw: string) {
 export default function App() {
   const [smiles, setSmiles] = useState("");
   const [protein, setProtein] = useState("");
-  const [connection, setConnection] = useState<Connection>("checking");
   const [nativeConnection, setNativeConnection] = useState<Connection>("checking");
   const [nativeExamples, setNativeExamples] = useState<NativeExample[]>([]);
   const [nativeExampleIndex, setNativeExampleIndex] = useState(0);
   const [result, setResult] = useState<Prediction | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
-  const [selectedExample, setSelectedExample] = useState(FIRST_EXAMPLE);
   const [loadedExample, setLoadedExample] = useState("");
   const [showDetails, setShowDetails] = useState(false);
   const sequence = cleanSequence(protein);
@@ -67,7 +49,6 @@ export default function App() {
     && /^[ACDEFGHIKLMNPQRSTVWYX]+$/.test(sequence);
 
   async function health() {
-    setConnection("checking");
     setNativeConnection("checking");
     try {
       const native = await api<{status: string}>("/api/geocpi/health");
@@ -77,34 +58,15 @@ export default function App() {
         setNativeExamples(examples.examples);
       }
     } catch { setNativeConnection("offline"); }
-    try {
-      const data = await api<{ status: string; service: string }>("/api/v2/health");
-      setConnection(data.status === "ok" && data.service === "dynacpi-v6-all-davis" ? "online" : "offline");
-    } catch {
-      setConnection("offline");
-    }
   }
   useEffect(() => { void health(); }, []);
 
   function loadExample() {
-    const index = EXAMPLES.findIndex(item => item.id === selectedExample);
-    if (index < 0) return;
-    const item = EXAMPLES[index];
-    setSmiles(item.smiles);
-    setProtein(item.sequence);
-    setLoadedExample(item.label);
-    setResult(null);
-    setError("");
-    // Each press loads the chosen preset, then prepares the next one.
-    setSelectedExample(EXAMPLES[(index + 1) % EXAMPLES.length].id);
-  }
-
-  function loadNativeExample() {
     if (!nativeExamples.length) return;
     const item = nativeExamples[nativeExampleIndex % nativeExamples.length];
     setSmiles(item.smiles);
     setProtein(item.sequence);
-    setLoadedExample("Verified native-bound complex " + item.sample_id);
+    setLoadedExample(item.sample_id);
     setNativeExampleIndex(n => n + 1);
     setResult(null);
     setError("");
@@ -120,23 +82,14 @@ export default function App() {
     setBusy(true);
     setResult(null);
     try {
-      let fused: Prediction | null = null;
-      if (nativeConnection === "online") {
-        try {
-          fused = await api<Prediction>("/api/geocpi/predict", { smiles: smiles.trim(), sequence });
-          if (!fused.geometry_used || !Number.isFinite(fused.prediction_pKd)) throw new Error("Invalid fused 3D result.");
-        } catch (err) {
-          if (!(err as Error).message.startsWith("No experimentally bound complex matches")) throw err;
-        }
+      const fused = await api<Prediction>("/api/geocpi/predict", {
+        smiles: smiles.trim(), sequence,
+      });
+      if (fused.status !== "ok" || fused.geometry_used !== true
+          || !Number.isFinite(fused.prediction_pKd)) {
+        throw new Error("GeoFuse did not return a valid fused 2D + 3D prediction.");
       }
-      if (fused && fused.geometry_used) {
-        setResult(fused);
-      } else {
-        if (connection !== "online") throw new Error("No verified 3D structure for this pair and 2D service unavailable.");
-        const base = await api<Prediction>("/api/v2/predict", { smiles: smiles.trim(), sequence });
-        if (base.status !== "ok" || !Number.isFinite(base.prediction_pKd)) throw new Error("Invalid 2D result.");
-        setResult({ ...base, geometry_used: false });
-      }
+      setResult(fused);
     } catch (err) {
       setError((err as Error).message);
     } finally {
@@ -150,9 +103,9 @@ export default function App() {
         <span className="brand-mark"><span/><span/><span/></span>
         <span><strong>GeoFuse <b>CPI</b></strong><small>MOLECULAR AFFINITY RESEARCH</small></span>
       </a>
-      <button type="button" className={"connection " + connection} onClick={() => void health()} title="Check backend connection">
+      <button type="button" className={"connection " + nativeConnection} onClick={() => void health()} title="Check backend connection">
         <span className="indicator"/>
-        {connection === "online" ? "Model online" : connection === "checking" ? "Connecting…" : "Model offline"}
+        {nativeConnection === "online" ? "Model online" : nativeConnection === "checking" ? "Connecting…" : "Model offline"}
         <span className="refresh-sign">↻</span>
       </button>
     </header>
@@ -167,7 +120,7 @@ export default function App() {
         <div className="intro-side">
           <span className="tiny-overline">MODEL</span>
           <strong>GeoFuse-CPI</strong>
-          <small>{nativeConnection === "online" ? "2D + verified native 3D fusion enabled" : "2D branch only — 3D service offline"}</small>
+          <small>2D + native 3D geometry · fused inference</small>
         </div>
       </section>
 
@@ -193,28 +146,26 @@ export default function App() {
             </div>
 
             <div className="example-area">
-              <div className="example-top"><strong>Try a DAVIS example</strong><span>{EXAMPLES.length} different pairs</span></div>
               <div className="example-controls">
-                <select id="example-select" aria-label="Choose the next example compound and protein" value={selectedExample}
-                  onChange={event => setSelectedExample(event.target.value)}>
-                  {EXAMPLES.map(item => <option value={item.id} key={item.id}>{item.label}</option>)}
-                </select>
-                <button type="button" onClick={loadExample} className="demo-button">
+                <button type="button" onClick={loadExample} className="demo-button"
+                  disabled={nativeConnection !== "online" || !nativeExamples.length}>
                   Load example <span aria-hidden="true">↗</span>
                 </button>
               </div>
-              <button className="native-example-button" type="button" disabled={nativeConnection !== "online" || !nativeExamples.length} onClick={loadNativeExample}>Load verified 3D complex ({nativeExamples.length || 0})</button>
-              <p className="example-help">{loadedExample ? "Loaded " + loadedExample + ". Next: " + (EXAMPLES.find(item => item.id === selectedExample)?.label ?? "first sample") + "." :
-                "Choose a sample, or click Load example repeatedly to cycle through all six."}</p>
+              <p className="example-help">
+                {loadedExample
+                  ? "Loaded example " + loadedExample + "."
+                  : "Examples use experimental bound complexes so both model branches can run."}
+              </p>
             </div>
             <div className="form-actions">
-              <button type="submit" className="primary-button" disabled={busy || (connection !== "online" && nativeConnection !== "online")}>
+              <button type="submit" className="primary-button" disabled={busy || nativeConnection !== "online"}>
                 {busy ? "Running model…" : "Predict affinity"} <span aria-hidden="true">↗</span>
               </button>
             </div>
           </form>
-          {(error || connection === "offline") && <div role="alert" className="form-error">
-            {error || "Prediction backend offline. Start GeoFuse CPI using start.bat."}
+          {(error || nativeConnection === "offline") && <div role="alert" className="form-error">
+            {error || "GeoFuse model backend offline. Start GeoFuse CPI using START_GEOFUSE_3D.bat."}
           </div>}
         </section>
 
@@ -227,27 +178,23 @@ export default function App() {
               <div><h2>Prediction result</h2><p>Estimated compound–protein affinity</p></div>
             </div>
             <span className={"result-status" + (result ? " ready" : "")}>
-              {result ? (result.geometry_used ? "● Fused 2D + 3D" : "● 2D only") : busy ? "◌ Running" : "○ Ready"}
+              {result ? "● Complete" : busy ? "◌ Running" : "○ Ready"}
             </span>
           </div>
           {result ? <div className="result-content">
             <span className="tiny-overline">PREDICTED AFFINITY</span>
             <div className="result-number">{result.prediction_pKd.toFixed(4)} <small>pKd</small></div>
-            <div className="result-meta">
-              <span className="model-label">{result.geometry_used ? "GeoFuse native-bound fusion" : "DynaCPI v6 — 2D only"}</span>
-              {result.sample_id && <span>Structure: {result.sample_id}</span>}
-            </div>
-            {result.geometry_used && typeof result.calibrated_2d_pKd === "number" && <p className="branch-numbers">2D source-calibrated branch: <strong>{result.calibrated_2d_pKd.toFixed(4)}</strong> · Geometry-conditioned fused score: <strong>{result.prediction_pKd.toFixed(4)}</strong></p>}
-            <p className="result-caveat">{result.geometry_used ? "Verified experimental ligand–protein bound pose used in the 704D geometry branch. Historical matched-complex demo, not a new blind validation." : "2D-only exploratory result. No experimentally bound pose matched this compound + protein; 3D fusion was NOT run."}</p>
+            <p className="result-caveat">GeoFuse-CPI 2D + experimental-bound 3D fusion.
+              Structure: {result.sample_id}. Research demonstration, not prospective validation.</p>
             <button type="button" className="clear-button" onClick={() => { setResult(null); setError(""); }}>Clear result ↗</button>
           </div> : <div className="result-empty">
             <div className="empty-mark" aria-hidden="true">◎</div>
             <strong>{busy ? "Calculating affinity…" : "Ready to predict"}</strong>
-            <p>{busy ? "Running the trained inference model." : "Fill both input fields or load one of the six examples, then predict."}</p>
+            <p>{busy ? "Running the trained inference model." : "Enter both inputs or load an example, then predict."}</p>
           </div>}
           <div className="result-footer">
             <span className="tiny-overline">IMPORTANT</span>
-            <p>Training-set examples are in-sample demonstrations, not independent validation. Results on new compounds or proteins are exploratory.</p>
+            <p>A matching experimental protein–ligand bound structure is required. No invented 3D poses or silent 2D fallbacks.</p>
           </div>
         </section>
         </div>
@@ -259,12 +206,12 @@ export default function App() {
         <div className="branch-fusion"><strong>Fusion</strong><span>2D calibrated prediction + bounded 3D residual → one affinity score</span><small>{result?.geometry_used ? "Both branches executed for this matched complex" : "3D branch only executes for a verified native-bound match"}</small></div>
       </section>
       <div className="bottom-note">
-        <span><span className="note-symbol">i</span> The molecule visualizer is independent. GeoFuse uses real 3D ligand–pocket geometry only when an exact experimental compound–protein match exists; otherwise the result is explicitly 2D-only.</span>
+        <span><span className="note-symbol">i</span> The molecular preview is visual only. Actual GeoFuse predictions require a matched experimental ligand–protein bound pose.</span>
         <button type="button" onClick={() => setShowDetails(value => !value)}>{showDetails ? "Hide details ↑" : "Model details ↗"}</button>
       </div>
       {showDetails && <section className="research-details">
         <strong>Prediction scope</strong>
-        <p>The GeoFuse 3D branch is the frozen source-trained HiQBind349 fourfold geometry residual, paired with a source-calibrated 423D DynaCPI v5 branch. For verified OpenBind crystal complexes, the exact compound and complete protein sequence select precomputed native geometry. Those OpenBind affinities have already been unsealed, so the demo is not a new prospective or independent test. Ordinary DAVIS examples and unmatched inputs run DynaCPI v6 2D only. The molecule visualizer is not the 3D model input.</p>
+        <p>GeoFuse-CPI fuses a source-calibrated 423D DynaCPI v5 branch with a 704D native ligand–pocket geometry residual. The current local structure library has 660 OpenBind experimental bound complexes. The backend matches canonical SMILES and full receptor sequence and rejects unmatched pairs rather than substituting a separate 2D predictor. OpenBind assay outcomes were previously unsealed, so these examples are historical demonstrations. RDKit ligand visualization is separate from the 3D model input.</p>
       </section>}
       <footer className="footer"><span>GEOFUSE CPI</span><span>LOCAL RESEARCH INTERFACE</span></footer>
     </main>

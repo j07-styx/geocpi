@@ -12,7 +12,7 @@ For a **verified exact compound–protein match** to a locally available experim
 
 The bridge's reference set is 660 native-bound OpenBind structures. The source manifest (`private/v51_raw660_structures/raw660.csv`), label-free `private/v51_raw660_RDKIT2025_features_noY.npz`, and fourfold fitted source-only residual/checkpoint files in `runs/v48_train349_source_fourfold_replay` are **not distributed**. Authorized local users can supply their own valid matching files. `DYNACPI_3D_PAPER` can point at a working research root.
 
-The 3D bridge returns HTTP 422 `no_verified_native_pose` for unmatched pairs; **no fake pose or geometry is generated**. The React UI explicitly marks those pairs as **2D-only** when the independently hosted 2D DynaCPI v6 backend is available.
+The 3D bridge returns HTTP 422 `no_verified_native_pose` for unmatched pairs; **no fake pose or geometry is generated**. The React UI uses one fused 2D+native-3D prediction route and displays the missing-structure error, with **no silent 2D fallback**.
 
 ## UI and local auxiliary services
 
