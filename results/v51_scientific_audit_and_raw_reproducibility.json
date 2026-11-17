@@ -1,0 +1,48 @@
+{
+  "status": "V51_INDEPENDENT_SCIENTIFIC_AUDIT_AND_COMPLETE_RAW660_E2E_REPRODUCIBILITY_VERIFIED",
+  "n_earlier_unsealed_OpenBind_qualifying_test_compounds": 482,
+  "original_test_scaffold_clusters": 264,
+  "independent_six_arm_metric_entries_verified": 54,
+  "independent_5000_scaffold_cluster_bootstrap_CI_bounds_verified": 12,
+  "independent_ci_max_absolute_difference": 2.0261570199409107e-15,
+  "replayed_original_finite_assay_median_aggregation_exactly": true,
+  "unique_original_source_smis_660": 660,
+  "unique_labeled_source_smis_482": 482,
+  "source_labeled_compounds_with_numeric_assay_from_only_non_qc_rows": 4,
+  "posthoc_flagged_assay_replicate_478_result_sensitivity": {
+    "n": 478,
+    "REAL_minus_SHUFFLED_Cindex": 0.039971223526521715,
+    "REAL_minus_POCKET_MAE": -0.11895435383861774,
+    "REAL_minus_original_Perceiver_RMSE": 0.5145483512552025,
+    "not_a_new_blind_test": true
+  },
+  "fresh_python_vEnv": "Windows Python3.11 venv with inherited system scientific packages; installed fair-esm2.0.0 and pinned rdkit2025.09.2",
+  "fresh_raw_source_bound_complexes_reprocessed": 660,
+  "all_original_704D_REAL_SHUFFLED_POCKET_features_exact": true,
+  "all_original_166D_sequence_molecule_side_features_exact": true,
+  "max_original_CPU_GPU_423D_context_absolute_difference": 0.018668711185455322,
+  "max_final_five_arm_prediction_absolute_difference_pKd": 0.018855168550341084,
+  "mean_max_across_arms_final_prediction_abs_difference_pKd": 0.0016149552466563726,
+  "prespecified_max_model_output_difference_allowed": 0.03,
+  "all_five_arms_prediction_within_fixed_tolerance": true,
+  "raw_inference_no_experimental_source_labels_accessed": true,
+  "original_model_checkpoints_unmodified": true,
+  "not_claimed": [
+    "fully hermetic independent reinstall",
+    "fresh raw349 training from source crystal structures",
+    "original Perceiver published fivefold SOTA",
+    "cross-target-family 3D generalization",
+    "3D improves OpenBind RMSE versus raw2D or Perceiver"
+  ],
+  "source_proof_SHA256": {
+    "original_V50_first_release_metric": "8df655770f5dacfcf2c59e9942008752a8e3f00fe40944393d5fe0e3c252a72e",
+    "independent_scientific_metric_and_bootstrap_audit": "ca45c6d36d49dace3a177661ad405097050332cfd7fec6800122fb27f1b3504b",
+    "independent_raw660_all5_model_parity_audit": "4c2c36e78757a269c30b489ab312a5e36dcb4665f2722091bab46b105476bdf4",
+    "independent_source_molecular_uniqueness_and_QC_audit": "13bbd2604df8273569e9872c88d85232ede2289f12c8ead4a3b3d6b86f6c1395",
+    "posthoc_strict_rowQC_478_sensitivity": "5ed6da7303a65d0cfeeb5372dddeee09b256aec2a165906f8f82a76538e40f25",
+    "original_frozen_OpenBind660_real_shuffled_pocket_inputs": "8b5f7bc9be0e7d8afc8c737fa963205ce1f004cebb99604518b143f15d47f5d5",
+    "original_frozen_OpenBind660_Dyna_predictor": "528eb279c2778d2006aa44ecad80ea3f4be65f5351dc5962d118800d6cfae762",
+    "fresh_cpu_raw660_reencoded_predictions": "a04e604496de4a19da866e51df34663eb20bd88ec15064b1ea6827d2fa21d936"
+  },
+  "public_aggregate_only_no_individual_raw_Kd_or_weights": true
+}

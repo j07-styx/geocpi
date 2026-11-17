@@ -1,0 +1,5 @@
+# Adds the original chemistry and pretrained ESM2 raw-input dependencies.
+# Python 3.11 tested; keep RDKit pinned to original raw v5 feature version.
+-r requirements.txt
+rdkit==2025.9.2
+fair-esm==2.0.0
