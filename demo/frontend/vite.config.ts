@@ -9,7 +9,8 @@ export default defineConfig({
     strictPort: true,
     proxy: {
       "/api/v2": { target: "http://127.0.0.1:8783", changeOrigin: false },
-      "/api/viewer": { target: "http://127.0.0.1:8785", changeOrigin: false }
+      "/api/viewer": { target: "http://127.0.0.1:8785", changeOrigin: false },
+      "/api/geocpi": { target: "http://127.0.0.1:8786", changeOrigin: false }
     }
   }
 });

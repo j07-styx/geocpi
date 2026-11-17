@@ -102,6 +102,8 @@ The verification command checks **published aggregate source hashes**, not hidde
 
 ## Local demonstration frontend
 
+**New: verified two-branch integration.** For exact SMILES plus receptor-sequence matches in the local native-bound OpenBind reference set, the React frontend now calls `demo/geocpi_bridge.py` to fuse the frozen DynaCPI v5 423D source-calibrated branch with the 704D experimental geometry residual branch. If no qualified native pose is present, the UI labels the result **2D-only** and does not invent a 3D prediction. See [demo integration](demo/README.md) for API wiring and constraints.
+
 The source code for the optional React interface and native-bound example API is in `demo/`. It is **not** a complete portable deployment: the native-bound API needs privately held, trained source-only checkpoints and example feature inputs, while the normal SMILES/sequence path uses a separate DAVIS v6 backend not shipped here. Do not treat the default interface as a working end-to-end 3D prediction from SMILES alone. The project includes no private assays, weights, ESM2 checkpoints, or full research datasets.
 
 The published code is research-only; before public deployment add authentication, rate limiting, secure CORS and dependency security review.
