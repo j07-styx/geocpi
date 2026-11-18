@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import MoleculeViewer from "./MoleculeViewer";
+import Glossary from "./Glossary";
+import { loadGlossary, type GlossaryDataset, type GlossaryCompound, type GlossaryProtein } from "./glossaryData";
 
 type Connection = "checking" | "online" | "offline";
 type Prediction = {
@@ -33,6 +35,8 @@ function cleanSequence(raw: string) {
 }
 
 export default function App() {
+  const [screen, setScreen] = useState<"predictor" | "glossary">(() => window.location.hash === "#glossary" ? "glossary" : "predictor");
+  const [glossaryData, setGlossaryData] = useState<GlossaryDataset | null>(null);
   const [smiles, setSmiles] = useState("");
   const [protein, setProtein] = useState("");
   const [nativeConnection, setNativeConnection] = useState<Connection>("checking");
@@ -44,6 +48,32 @@ export default function App() {
   const [loadedExample, setLoadedExample] = useState("");
   const [showDetails, setShowDetails] = useState(false);
   const sequence = cleanSequence(protein);
+  const compoundName = glossaryData?.compounds.find(item => item.smiles === smiles.trim())?.name;
+  const proteinName = glossaryData?.proteins.find(item => item.sequence === sequence)?.name;
+
+  useEffect(() => {
+    let active = true;
+    loadGlossary().then(data => { if (active) setGlossaryData(data); }).catch(() => {});
+    const handleHash = () => setScreen(window.location.hash === "#glossary" ? "glossary" : "predictor");
+    window.addEventListener("hashchange", handleHash);
+    return () => { active = false; window.removeEventListener("hashchange", handleHash); };
+  }, []);
+
+  function navigate(view: "predictor" | "glossary") {
+    window.location.hash = view === "glossary" ? "glossary" : "predictor";
+    setScreen(view);
+  }
+
+  function useGlossaryPair(compound: GlossaryCompound, target: GlossaryProtein) {
+    setSmiles(compound.smiles);
+    setProtein(target.sequence);
+    setLoadedExample("");
+    setResult(null);
+    setError("");
+    navigate("predictor");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
   const valid = smiles.trim().length > 0 && smiles.trim().length <= 500
     && sequence.length >= 1 && sequence.length <= 2048
     && /^[ACDEFGHIKLMNPQRSTVWYX]+$/.test(sequence);
@@ -103,14 +133,21 @@ export default function App() {
         <span className="brand-mark"><span/><span/><span/></span>
         <span><strong>GeoFuse <b>CPI</b></strong><small>MOLECULAR AFFINITY RESEARCH</small></span>
       </a>
+      <div className="topbar-actions">
+        <nav className="workspace-nav" aria-label="Workspace views">
+          <button type="button" className={screen === "predictor" ? "active" : ""} aria-current={screen === "predictor" ? "page" : undefined} onClick={() => navigate("predictor")}>Predictor</button>
+          <button type="button" className={screen === "glossary" ? "active" : ""} aria-current={screen === "glossary" ? "page" : undefined} onClick={() => navigate("glossary")}>Glossary</button>
+        </nav>
       <button type="button" className={"connection " + nativeConnection} onClick={() => void health()} title="Check backend connection">
         <span className="indicator"/>
         {nativeConnection === "online" ? "Model online" : nativeConnection === "checking" ? "Connecting…" : "Model offline"}
         <span className="refresh-sign">↻</span>
       </button>
+      </div>
     </header>
 
     <main className="main-content">
+      {screen === "glossary" ? <Glossary onUsePair={useGlossaryPair} /> : <>
       <section className="intro">
         <div>
           <div className="intro-kicker"><span className="intro-spark"/> AFFINITY PREDICTION WORKSPACE</div>
@@ -137,12 +174,18 @@ export default function App() {
               <div className="form-label"><label htmlFor="smiles">Compound SMILES</label><span>{smiles.length} / 500</span></div>
               <input id="smiles" autoComplete="off" spellCheck={false} placeholder="e.g. CC(=O)Oc1ccccc1C(=O)O" value={smiles}
                 onChange={event => { setSmiles(event.target.value); setResult(null); setLoadedExample(""); }} />
+              {smiles.trim() && <p className={compoundName ? "identity-match" : "identity-unmatched"}>
+                <span>Compound:</span> {compoundName ?? "Not identified in the DAVIS glossary"}
+              </p>}
             </div>
             <div className="form-group">
               <div className="form-label"><label htmlFor="protein">Protein amino-acid sequence</label><span>{sequence.length} / 2048 aa</span></div>
               <textarea id="protein" rows={8} spellCheck={false} placeholder="Paste a protein sequence or FASTA record…" value={protein}
                 onChange={event => { setProtein(event.target.value); setResult(null); setLoadedExample(""); }} />
               <p className="field-support">FASTA headers and line breaks are accepted.</p>
+              {sequence && <p className={proteinName ? "identity-match" : "identity-unmatched"}>
+                <span>Protein:</span> {proteinName ?? "Not identified in the DAVIS glossary"}
+              </p>}
             </div>
 
             <div className="example-area">
@@ -213,6 +256,7 @@ export default function App() {
         <strong>Prediction scope</strong>
         <p>GeoFuse-CPI fuses a source-calibrated 423D DynaCPI v5 branch with a 704D native ligand–pocket geometry residual. The current local structure library has 660 OpenBind experimental bound complexes. The backend matches canonical SMILES and full receptor sequence and rejects unmatched pairs rather than substituting a separate 2D predictor. OpenBind assay outcomes were previously unsealed, so these examples are historical demonstrations. RDKit ligand visualization is separate from the 3D model input.</p>
       </section>}
+      </>}
       <footer className="footer"><span>GEOFUSE CPI</span><span>LOCAL RESEARCH INTERFACE</span></footer>
     </main>
   </div>;

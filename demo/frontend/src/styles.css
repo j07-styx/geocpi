@@ -149,3 +149,16 @@ a{color:inherit;text-decoration:none}
 .branch-numbers{margin-top:10px;color:#afc4df;font-size:11px;line-height:1.7}
 .branch-numbers strong{color:#e5f1ff}
 @media(max-width:530px){.branch-pipeline{grid-template-columns:1fr}.branch-fusion{grid-column:auto}}
+
+/* Predictor / glossary navigation and optional verified DAVIS name recognition */
+.topbar-actions{display:flex;align-items:center;gap:17px}
+.workspace-nav{display:flex;align-items:center;gap:4px;padding:4px;border:1px solid #364762;border-radius:10px;background:#172338}
+.workspace-nav button{background:transparent;border:0;border-radius:7px;padding:9px 15px;color:#aabbd6;font-size:12px;font-weight:700}
+.workspace-nav button.active{background:#314565;color:#f0f4ff;box-shadow:0 2px 8px #0d183540}
+.workspace-nav button:not(.active):hover{background:#243753;color:#e3edff}
+.identity-match,.identity-unmatched{font-size:11px;line-height:1.55;margin-top:9px;padding:7px 10px;border-radius:7px}
+.identity-match{color:#a8eadc;background:#193837;border:1px solid #355f59}
+.identity-unmatched{color:#a8b5cc;background:#1d2a40;border:1px solid #344966}
+.identity-match span,.identity-unmatched span{font-weight:700}
+@media(max-width:790px){.topbar{height:auto;min-height:74px;padding:12px 17px;flex-wrap:wrap}.topbar-actions{gap:10px;margin-left:auto}.workspace-nav button{padding:9px 11px}}
+@media(max-width:540px){.topbar{gap:13px}.topbar-actions{width:100%;justify-content:space-between}.workspace-nav{flex:1}.workspace-nav button{flex:1}.connection{font-size:10px;padding:8px 9px}.connection .refresh-sign{display:none}}

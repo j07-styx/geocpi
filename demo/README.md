@@ -37,3 +37,36 @@ python demo/geocpi_bridge.py
 It requires PyTorch, NumPy, RDKit, joblib, LightGBM, and the private trained source checkpoint files. The separate `demo/backend.py` also provides the older native-geometry example/feature API at port 8784.
 
 **Limitations:** This bridge does not retrieve structures online or dock arbitrary new ligands. Native bound 3D is available for matching local experimental structures only. The OpenBind source outcomes have already been unsealed, so matched-complex examples are not new prospective evaluations. Do not claim that a rendered 3D ligand conformer was fed into the affinity model. Do not expose local services publicly without security hardening.
+
+## Compound–protein glossary
+
+The React frontend includes a standalone **Glossary** view, reachable from the
+top navigation or directly at `http://127.0.0.1:5174/#glossary`. It has exactly
+five data columns: compound name, SMILES, protein name, amino-acid sequence,
+and binding affinity value. Search compounds (including PubChem CIDs) and
+proteins separately; filter the 10,000 nM screening cutoff; sort and paginate
+results. Each amino-acid sequence can be expanded or copied.
+
+The versioned `demo/frontend/public/davis-glossary.json` is a compact public
+snapshot: **68 compounds x 442 protein records = 30,056 DAVIS pairs** from
+[DeepDTA DAVIS](https://github.com/hkmztrk/DeepDTA/tree/master/data/davis).
+Compound names were resolved by CID using [PubChem PUG REST](https://pubchem.ncbi.nlm.nih.gov/docs/pug-rest).
+The dataset reports **Kd in nM**, not a GeoFuse model prediction.
+For quantified pairs, pKd = 9 - log10(Kd in nM). Original DAVIS values of
+10,000 nM are screening cutoffs/weak or unobserved interactions, **not**
+exact measurements; the UI labels them accordingly. Some proteins contain
+mutant or phosphorylation-state annotations as named in the original dataset.
+
+To regenerate the public snapshot using an authorized copy of
+`ligands_can.txt`, `proteins.txt` and `Y`:
+
+```powershell
+python demo/generate_glossary.py --source C:\\path\\to\\public\\davis
+```
+
+The generator requires NumPy and network access to PubChem. Browsing the
+Glossary itself is static and works without the GeoFuse model backend.
+Selecting “Use in predictor” populates SMILES and sequence but **does not
+guarantee** that a corresponding experimental native-bound 3D structure is
+available. Input-name labels are exact lookups against this reference library,
+not comprehensive chemical identification.
