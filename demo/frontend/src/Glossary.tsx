@@ -4,7 +4,7 @@ import { loadGlossary, type GlossaryCompound, type GlossaryDataset, type Glossar
 
 type Row = { compoundIndex: number; proteinIndex: number; kdNm: number };
 type Filter = "all" | "quantified" | "cutoff";
-type Sort = "strongest" | "compound" | "protein";
+type Sort = "strongest" | "weakest" | "compound" | "protein";
 const PAGE_SIZE = 20;
 const CUTOFF_NM = 10000;
 
@@ -57,6 +57,7 @@ export default function Glossary({
         || a.kdNm - b.kdNm;
       if (sort === "protein") return proteins[a.proteinIndex].name.localeCompare(proteins[b.proteinIndex].name)
         || a.kdNm - b.kdNm;
+      if (sort === "weakest") return b.kdNm - a.kdNm || a.compoundIndex - b.compoundIndex;
       return a.kdNm - b.kdNm || a.compoundIndex - b.compoundIndex;
     });
     return rows;
@@ -127,6 +128,7 @@ export default function Glossary({
           <span>Sort results</span>
           <select aria-label="Sort glossary entries" value={sort} onChange={event => { setSort(event.target.value as Sort); setPage(0); }}>
             <option value="strongest">Strongest binding</option>
+            <option value="weakest">Weakest binding</option>
             <option value="compound">Compound A–Z</option>
             <option value="protein">Protein A–Z</option>
           </select>

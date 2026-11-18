@@ -58,6 +58,25 @@ EXAMPLES = [
      "source": "OpenBind 2026 experimental ligand-protein complex"}
     for r in rows[:6]
 ]
+# Two distinct compounds with one exact full receptor sequence: real, label-free input pairs.
+# This lets the comparison UI demonstrate two genuine supported model calls.
+compare_by_target = defaultdict(dict)
+for r in rows:
+    key = normalize_sequence(r["sequence"])
+    compare_by_target[key].setdefault(canonical(r["smiles"]), r)
+COMPARE_EXAMPLES = []
+for target, ligands in sorted(compare_by_target.items(), key=lambda item: -len(item[1])):
+    if len(ligands) < 2:
+        continue
+    first, second = list(ligands.values())[:2]
+    COMPARE_EXAMPLES.append({
+        "sequence": target,
+        "compound_a": {"sample_id": first["sample_id"], "smiles": first["smiles"]},
+        "compound_b": {"sample_id": second["sample_id"], "smiles": second["smiles"]},
+        "source": "OpenBind 2026 native-bound structures, two distinct ligands, same receptor",
+    })
+    if len(COMPARE_EXAMPLES) == 5:
+        break
 
 class Handler(BaseHTTPRequestHandler):
     def respond(self, code: int, payload: dict) -> None:
@@ -80,6 +99,8 @@ class Handler(BaseHTTPRequestHandler):
             })
         if self.path == "/api/geocpi/examples":
             return self.respond(200, {"examples": EXAMPLES})
+        if self.path == "/api/geocpi/compare-examples":
+            return self.respond(200, {"examples": COMPARE_EXAMPLES})
         return self.respond(404, {"error": "Unknown route"})
 
     def do_POST(self):
