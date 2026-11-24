@@ -6,6 +6,29 @@ A frozen **GeoFuse-CPI 2D (v5)** protein/compound backbone with a small **47,361
 
 ![Full DAVIS-pretrained PerceiverCPI comparison](figures/davis-matched-comparison.png)
 
+## Reproduce the reported benchmarks
+
+The published BioLiP3 and OpenBind benchmark tables can be recomputed on CPU using the released frozen feature inputs and trained GeoFuse-CPI geometry heads. No private research directory, GPU or ESM2 download is needed for this feature-level replay.
+
+```bash
+git clone https://github.com/j07-styx/geocpi.git
+cd geocpi
+# Python 3.11 in a fresh virtual environment is recommended.
+python -m pip install torch==2.14.0 --index-url https://download.pytorch.org/whl/cpu
+python -m pip install -r requirements-replay.txt
+python reproduce_biolip3.py
+python reproduce.py
+```
+
+Both scripts download the exact original public experimental dataset, verify its SHA-256, recompute GeoFuse-CPI predictions from the four source-trained folds, then independently calculate RMSE, C-index and confidence intervals. The original PerceiverCPI comparator uses frozen ensemble predictions, not fresh Perceiver training. The released replay bundles contain no numerical experimental affinity labels.
+
+| Benchmark | Recomputed GeoFuse-CPI 2D+3D RMSE | Recomputed C-index | Metric / interval checks |
+|---|---:|---:|---:|
+| BioLiP3 pooled 70 (post-hoc) | 1.318425 | 0.728518 | 105 / 8 |
+| OpenBind 482 (single target) | 1.798589 | 0.663969 | 60 / 12 |
+
+Verified locally on Python 3.11 CPU against the original archived public dataset bytes. For an offline, label-free test, add `--inference-only` to either script. See [reproduction guide](reproduction/README.md) for source versions, artifact contents, exact scope and troubleshooting.
+
 ## Repository overview
 
 | Path | Purpose |
@@ -16,6 +39,8 @@ A frozen **GeoFuse-CPI 2D (v5)** protein/compound backbone with a small **47,361
 | `evaluate.py`, `verify.py` | Affinity metrics and aggregate/provenance verification |
 | [`docs/`](docs/) | Methods, input and checkpoint instructions, release scope |
 | [`results/`](results/) | Frozen aggregate evidence and replay records |
+| [`reproduction/`](reproduction/) | Portable replay bundles; source-trained weights and label-free inputs |
+| `reproduce_biolip3.py`, `reproduce.py` | Recompute BioLiP3 and OpenBind benchmark metrics |
 | [`figures/`](figures/) | Historical benchmark figures |
 | [`tests/`](tests/) | Synthetic smoke and input-guard tests |
 | [`demo/`](demo/) | Optional research web interface and local APIs |
@@ -121,6 +146,6 @@ The verification command checks **published aggregate source hashes**, not hidde
 
 **Verified two-branch integration.** For exact SMILES plus receptor-sequence matches in the local native-bound OpenBind reference set, the React frontend now calls `demo/geocpi_bridge.py` to fuse the frozen GeoFuse-CPI 2D (v5) 423D source-calibrated branch with the 704D experimental geometry residual branch. If no qualified native pose is present, the UI refuses the prediction with a clear missing-structure message rather than silently switching to 2D or inventing 3D geometry. See [demo integration](demo/README.md) for API wiring and constraints.
 
-The source code for the optional React interface and native-bound example API is in `demo/`. It is **not** a complete portable deployment: the native-bound API needs privately held, trained source-only checkpoints and example feature inputs, while the normal SMILES/sequence path uses a separate DAVIS v6 backend not shipped here. Do not treat the default interface as a working end-to-end 3D prediction from SMILES alone. The project includes no private assays, weights, ESM2 checkpoints, or full research datasets.
+The source code for the optional React interface and native-bound example API is in `demo/`. It is **not** a complete portable deployment: the native-bound API needs privately held, trained source-only checkpoints and example feature inputs, while the normal SMILES/sequence path uses a separate DAVIS v6 backend not shipped here. Do not treat the default interface as a working end-to-end 3D prediction from SMILES alone. The demo still needs separately supplied backbone weights and raw structure inputs. The portable benchmark bundles include the trained residual heads and calibrators, but no private assays, ESM2 checkpoints, or full research datasets.
 
 The published code is research-only; before public deployment add authentication, rate limiting, secure CORS and dependency security review.

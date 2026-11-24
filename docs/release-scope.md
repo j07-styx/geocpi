@@ -2,9 +2,9 @@
 
 This repository is a deliberately curated public source snapshot, not a copy of the working research directory.
 
-Included: compact model/training/evaluation/source reproducibility code, aggregate benchmark evidence and figures, guard tests, optional React UI and native-bound example API source.
+Included: compact model/training/evaluation/source reproducibility code, aggregate benchmark evidence and figures, guard tests, optional React UI and native-bound example API source, plus portable prepared-feature replay bundles containing source-trained geometry heads, LightGBM text models, normalization parameters, frozen label-free benchmark features and comparator predictions.
 
-Not included: private assay records, individual protected test predictions, source datasets, checkpoints, ESM2 weights, local virtual environments, research provenance archives, raw PDB/SDF structures, or user-specific launch scripts.
+Not included: private assay records, individual still-protected test predictions, raw source datasets, full backbone checkpoints, ESM2 weights, local virtual environments, research provenance archives, raw PDB/SDF structures, or user-specific launch scripts.
 
 **Research limitations:** The retrospective BioLiP3 full-system comparator is not an equal-input architecture win; real-vs-shuffled geometry there is inconclusive. The independently sourced OpenBind 482-compound test showed ranking but not absolute RMSE improvement; the primary two-control geometry gate failed. DockBind failed its locked minimum-30 structure gate and affinity labels remain sealed.
 
@@ -15,3 +15,5 @@ The original GeoFuse-CPI 2D (v5) and PerceiverCPI author attributions remain wit
 ## Compatibility and citation
 
 Use `geofuse_cpi` for new Python imports. The historical `dynacpi3d` package is a thin compatibility alias, and the old demo environment variable names remain accepted. Result JSON, geometry encoder bytes, original model format strings and archived figures retain their source identifiers. Cite the repository revision and the original dataset/baseline references in the methods document; a paper DOI and license have not been assigned in this release.
+
+The historical BioLiP3 and OpenBind cohorts are already scored. Their released model-derived replay inputs and predictions are for retrospective reproducibility only; the original experimental affinities are downloaded directly from the source. No reserved test cohorts are included.

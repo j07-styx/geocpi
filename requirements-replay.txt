@@ -1,0 +1,8 @@
+# Verified feature-level CPU replay environment (Python 3.11).
+# Install CPU torch first as shown in README.md.
+numpy==2.4.6
+torch==2.14.0
+lightgbm==4.7.0
+scikit-learn==1.9.1
+scipy==1.17.1
+joblib==1.6.0

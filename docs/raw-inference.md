@@ -18,7 +18,7 @@ Only sample_id, smiles, ligand_sdf, complex_pdb are required. Other fields: assa
 
 ## Model weights
 
-These large originals are **not** in the public repo. You must supply them from authorized downloads or the preserved local research project:
+The full original backbone weights and raw-input deployment artifacts are **not** in the public repo. The separate prepared-feature replay bundles include the trained residual heads and calibrators for reproducing the reported historical metrics. You must supply them from authorized downloads or the preserved local research project:
 
 - Original FAIR `esm2_t33_650M_UR50D.pt`, SHA256 `ea9d0522b335a8778dea6535a65301f10208dece28cd5865482b0b1fc446168c` (~2.6 GB).
 - DAVIS 68 source-ligand SMILES JSON and original GeoFuse-CPI 2D v5 seed2931 and seed2932 checkpoints. Both are SHA-pinned in code.

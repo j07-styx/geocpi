@@ -32,3 +32,8 @@ jobs:
           python tests/smoke_test.py
           python tests/test_raw_input_guards.py
           python tests/test_import_compatibility.py
+
+      - name: Recompute frozen benchmark predictions (no external labels)
+        run: |
+          python reproduce_biolip3.py --inference-only
+          python reproduce.py --inference-only
