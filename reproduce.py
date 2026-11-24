@@ -4,7 +4,7 @@ No training labels or test affinities are included in the replay bundle.
 The public experimental archive is downloaded independently and SHA-pinned.
 The Perceiver baseline is replayed from its frozen ensemble outputs.
 """
-import argparse, collections, csv, hashlib, json, math, sys, tempfile, urllib.request, zipfile
+import argparse, collections, csv, hashlib, json, math, sys, tempfile, time, urllib.error, urllib.request, zipfile
 from pathlib import Path
 import numpy as np
 import lightgbm as lgb
@@ -41,17 +41,26 @@ def source_archive(path, url=SOURCE_URL, expected_sha=SOURCE_SHA, size=124498453
     if not path.exists():
         path.parent.mkdir(parents=True, exist_ok=True)
         part = path.with_suffix(".download")
-        print("Downloading pinned original dataset...", flush=True)
-        try:
-            with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "GeoFuse-CPI-reproduction/1.0"}), timeout=90) as response, part.open("wb") as f:
-                while block := response.read(1 << 20):
-                    f.write(block)
-                    require(f.tell() <= size, "Unexpected archive size")
-            require(sha(part) == expected_sha, "Downloaded archive SHA mismatch")
-            part.replace(path)
-        finally:
-            if part.exists():
-                part.unlink()
+        for attempt in range(1, 4):
+            print(f"Downloading pinned original dataset (attempt {attempt}/3)...", flush=True)
+            try:
+                with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "GeoFuse-CPI-reproduction/1.0"}), timeout=90) as response, part.open("wb") as f:
+                    while block := response.read(1 << 20):
+                        f.write(block)
+                        require(f.tell() <= size, "Unexpected archive size")
+                require(part.stat().st_size == size and sha(part) == expected_sha,
+                        "Downloaded source differs from the pinned snapshot; do not use a different revision.")
+                part.replace(path)
+                break
+            except (urllib.error.URLError, TimeoutError, ConnectionError) as exc:
+                if attempt == 3:
+                    flag = "--archive" if url == SOURCE_URL else "--source"
+                    raise SystemExit(f"Dataset server unavailable: {exc}. Download the original file from {url} and rerun with {flag} PATH. For offline prediction parity use --inference-only.") from None
+                print(f"Download failed: {exc}; retrying.", flush=True)
+                time.sleep(attempt * 2)
+            finally:
+                if part.exists():
+                    part.unlink()
     require(sha(path) == expected_sha, "Original source archive SHA mismatch")
     return path
 

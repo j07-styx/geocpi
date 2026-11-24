@@ -20,14 +20,26 @@ python reproduce_biolip3.py
 python reproduce.py
 ```
 
-Both scripts download the exact original public experimental dataset, verify its SHA-256, recompute GeoFuse-CPI predictions from the four source-trained folds, then independently calculate RMSE, C-index and confidence intervals. The original PerceiverCPI comparator uses frozen ensemble predictions, not fresh Perceiver training. The released replay bundles contain no numerical experimental affinity labels.
+Both scripts attempt to download the exact original public experimental dataset (or accept a local copy), verify its SHA-256, recompute GeoFuse-CPI predictions from the four source-trained folds, then independently calculate RMSE, C-index and confidence intervals. The original PerceiverCPI comparator uses frozen ensemble predictions, not fresh Perceiver training. The released replay bundles contain no numerical experimental affinity labels.
 
 | Benchmark | Recomputed GeoFuse-CPI 2D+3D RMSE | Recomputed C-index | Metric / interval checks |
 |---|---:|---:|---:|
 | BioLiP3 pooled 70 (post-hoc) | 1.318425 | 0.728518 | 105 / 8 |
 | OpenBind 482 (single target) | 1.798589 | 0.663969 | 60 / 12 |
 
-Verified locally on Python 3.11 CPU against the original archived public dataset bytes. For an offline, label-free test, add `--inference-only` to either script. See [reproduction guide](reproduction/README.md) for source versions, artifact contents, exact scope and troubleshooting.
+Verified from a fresh Git clone on Windows/Python 3.11 CPU with installed reference dependencies and the original dataset snapshots. BioLiP3 automatic download also passed. OpenBind automatic download encountered an HTTP 504 from Zenodo; full scoring passed using the verified local archive. If Zenodo is unavailable, obtain the original file from [the dataset record](https://doi.org/10.5281/zenodo.22142262) and run `python reproduce.py --archive /path/to/OpenBind_EV-A71_2A.zip`. For offline, label-free inference parity, add `--inference-only` to either command.
+
+### Reproducibility scope
+
+| Component | Released capability |
+|---|---|
+| Calibrated 2D and native 3D GeoFuse predictions | Recomputed from original frozen feature inputs and trained model artifacts |
+| Raw 2D backbone scores | Replayed from frozen input features; original backbone not rerun |
+| PerceiverCPI comparison | Metrics recalculated from frozen comparator predictions; no independent retraining |
+| Published benchmark tables | Recomputed from original public affinity records, with checksum and cohort checks |
+| Raw SMILES/structure inference and full retraining | Code provided for authorized external inputs; full weights, source training arrays and independent clean-room training not supplied |
+
+This release supports **prepared-feature inference and benchmark score reproduction**, not full end-to-end training reproduction or a prospective docking benchmark. Both BioLiP3 cohorts are historical and the pooled comparison is post-hoc. OpenBind is a single-target study; real 3D did not improve absolute RMSE over raw 2D or PerceiverCPI, and the predeclared geometry criterion was not met. See [reproduction guide](reproduction/README.md) for details and [methods](docs/methods.md) for experimental limitations.
 
 ## Repository overview
 
