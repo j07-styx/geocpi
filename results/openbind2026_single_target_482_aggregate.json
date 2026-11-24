@@ -1,0 +1,184 @@
+{
+  "status": "V50_NEW_EXTERNAL_2A_NATIVE_DISTANCE_SPECIFIC_CRITERION_NOT_MET",
+  "source": "OpenBind 2026 EV-A71/CVA16 2A original independent single-protease experiment",
+  "numeric_source_field": "experimental_pKD (already -log10 molar Kd; not transformed)",
+  "n_prelabel_selected": 660,
+  "n_labeled_accepted_compounds": 482,
+  "n_unique_Murcko_or_acyclic_scaffolds_labeled": 264,
+  "meta_assay_records": {
+    "metadata_rows": 925,
+    "missing_or_nonnumeric_assay": 276,
+    "finite_assay_rows": 649
+  },
+  "n_replicates_for_compound_max": 4,
+  "scored_model_original_source_frozen": {
+    "raw_DAVIS_v5": {
+      "n": 482,
+      "MSE": 0.7749348919129663,
+      "RMSE": 0.8803038633977283,
+      "MAE": 0.7319101631718552,
+      "R2": -0.019661286503640962,
+      "Cindex": 0.509434857635893,
+      "Pearson_r": 0.049873361048143564,
+      "Spearman_rho": 0.02888861538673068,
+      "mean_prediction": 5.210647989605472,
+      "mean_observed_pKD": 5.130090041493775
+    },
+    "calibrated_original_DynaV5_2D": {
+      "n": 482,
+      "MSE": 3.210340648008877,
+      "RMSE": 1.791742349783829,
+      "MAE": 1.6388488126954623,
+      "R2": -3.2241743266753176,
+      "Cindex": 0.6571656600517688,
+      "Pearson_r": 0.5093702878000821,
+      "Spearman_rho": 0.48982613924718055,
+      "mean_prediction": 6.755223540057327,
+      "mean_observed_pKD": 5.130090041493775
+    },
+    "original_DynaV5_plus_REAL_native_pair_geom": {
+      "n": 482,
+      "MSE": 3.2349214732245914,
+      "RMSE": 1.7985887448843305,
+      "MAE": 1.6408545043810483,
+      "R2": -3.2565178385294606,
+      "Cindex": 0.6639689387402934,
+      "Pearson_r": 0.48224113881129366,
+      "Spearman_rho": 0.5051017990176797,
+      "mean_prediction": 6.7527329430447125,
+      "mean_observed_pKD": 5.130090041493775
+    },
+    "original_DynaV5_plus_SHUFFLED_native_pair_geom": {
+      "n": 482,
+      "MSE": 3.320373575509176,
+      "RMSE": 1.8221892260435457,
+      "MAE": 1.6437180128172342,
+      "R2": -3.3689559303733443,
+      "Cindex": 0.6247368421052631,
+      "Pearson_r": 0.36512959063869527,
+      "Spearman_rho": 0.3775310108446614,
+      "mean_prediction": 6.749967048420621,
+      "mean_observed_pKD": 5.130090041493775
+    },
+    "original_DynaV5_plus_POCKET_only": {
+      "n": 482,
+      "MSE": 3.6718822611901047,
+      "RMSE": 1.9162156092648095,
+      "MAE": 1.760079570480588,
+      "R2": -3.831471946104476,
+      "Cindex": 0.6527264883520276,
+      "Pearson_r": 0.42720391689669923,
+      "Spearman_rho": 0.460660443230573,
+      "mean_prediction": 6.8743293199306095,
+      "mean_observed_pKD": 5.130090041493775
+    },
+    "original_full12_DAVISpretrained_Perceiver_ensemble": {
+      "n": 482,
+      "MSE": 1.6601120370472544,
+      "RMSE": 1.2884533507454798,
+      "MAE": 1.1191762467051938,
+      "R2": -1.1843796080173123,
+      "Cindex": 0.46575496117342535,
+      "Pearson_r": -0.09429145209166856,
+      "Spearman_rho": -0.10139772133710868,
+      "mean_prediction": 6.078284042257491,
+      "mean_observed_pKD": 5.130090041493775
+    }
+  },
+  "four_fixed_paired_descriptive_scaffold_cluster_5000boot": {
+    "REAL_minus_SHUFFLED": {
+      "n_scaffold_clusters": 264,
+      "n_bootstraps": 5000,
+      "MAE_delta_first_minus_second": -0.00286350843618588,
+      "MAE_delta_95pct_CI": [
+        -0.033267232891015575,
+        0.030542155480356235
+      ],
+      "MAE_95pct_CI_excludes_0": false,
+      "RMSE_delta_first_minus_second": -0.023600481159215203,
+      "RMSE_delta_95pct_CI": [
+        -0.05480909429814125,
+        0.009999283568014442
+      ],
+      "Cindex_delta_first_minus_second": 0.039232096635030245,
+      "Cindex_delta_95pct_CI": [
+        0.020340401267465905,
+        0.056204749382520826
+      ]
+    },
+    "REAL_minus_POCKET": {
+      "n_scaffold_clusters": 264,
+      "n_bootstraps": 5000,
+      "MAE_delta_first_minus_second": -0.11922506609953976,
+      "MAE_delta_95pct_CI": [
+        -0.15221778653352946,
+        -0.08935590168517941
+      ],
+      "MAE_95pct_CI_excludes_0": true,
+      "RMSE_delta_first_minus_second": -0.11762686438047898,
+      "RMSE_delta_95pct_CI": [
+        -0.14856914884556216,
+        -0.0892103574802572
+      ],
+      "Cindex_delta_first_minus_second": 0.011242450388265768,
+      "Cindex_delta_95pct_CI": [
+        -0.0038070666477079762,
+        0.025635703260396662
+      ]
+    },
+    "REAL_minus_calibrated_2D": {
+      "n_scaffold_clusters": 264,
+      "n_bootstraps": 5000,
+      "MAE_delta_first_minus_second": 0.002005691685585953,
+      "MAE_delta_95pct_CI": [
+        -0.03134183649214945,
+        0.033451987619096304
+      ],
+      "MAE_95pct_CI_excludes_0": false,
+      "RMSE_delta_first_minus_second": 0.006846395100501557,
+      "RMSE_delta_95pct_CI": [
+        -0.027840926493329497,
+        0.03923196338013118
+      ],
+      "Cindex_delta_first_minus_second": 0.006803278688524594,
+      "Cindex_delta_95pct_CI": [
+        -0.008543256663618446,
+        0.02357595549474789
+      ]
+    },
+    "REAL_minus_full12_original_Perceiver": {
+      "n_scaffold_clusters": 264,
+      "n_bootstraps": 5000,
+      "MAE_delta_first_minus_second": 0.5216782576758545,
+      "MAE_delta_95pct_CI": [
+        0.4545852855759888,
+        0.5863247066508007
+      ],
+      "MAE_95pct_CI_excludes_0": true,
+      "RMSE_delta_first_minus_second": 0.5101353941388507,
+      "RMSE_delta_95pct_CI": [
+        0.4550994389995364,
+        0.5606570855399852
+      ],
+      "Cindex_delta_first_minus_second": 0.19821397756686804,
+      "Cindex_delta_95pct_CI": [
+        0.14419094172546365,
+        0.23972203841063844
+      ]
+    }
+  },
+  "correct_native_distances_both_primary_MAE_CI_negative": false,
+  "single_protease_target_not_multifamily_generalization": true,
+  "experimental_native_bound_poses_accessed_before_assay": true,
+  "system_matched_source_DAVIS_but_not_same_ESM2_or_native_pose_input": true,
+  "no_model_fitting_tuning_or_label_based_source_selection": true,
+  "reference_model_6arms_Dyna5_plus_fullDAVIS_Perceiver": true,
+  "source_files_SHA256": {
+    "prelabel_score_protocol": "29bc1afc6f5733b5c761b4df15c508d191eb479d0b0ebfcc0e00cb0f1fa0f9ea",
+    "prelabel_selection": "8fb82bcf1825135e7670ba6cda714ce7e5a8dbadb55b067b3de271c28d7c9aee",
+    "Dyna_five_arm_noY": "528eb279c2778d2006aa44ecad80ea3f4be65f5351dc5962d118800d6cfae762",
+    "Original_Perceiver_twelve_noY": "43aff1094bd5d855b36ce0b83b56d61e3acd24b51349d497fff1ee72f5e9c200",
+    "OpenBind_archive": "e0d2e38eddf75ebf4247aff0fe28ae15dfa25ecb30deeb4cf950ae184b304a25",
+    "private_test_y_alignment": "227332ee060569c8c4335b8d3a627259e0bce663963a31087e67c3eed7355920"
+  }
+}

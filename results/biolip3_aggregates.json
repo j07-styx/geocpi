@@ -1,0 +1,46 @@
+{
+  "status": "SOURCE_VERIFIED_HISTORICAL_COHORT_AGGREGATES_NOT_RAW_REPLAY",
+  "scope": "Experimental native X-ray bound BioLiP3 Ki/Kd, historical measurements. Two separately outcome-blind selected sets from SAME database; posthoc pooled70",
+  "provenance_original_V21_score_json_sha256": "34856bb33039f6bb86d5a8809d25ae42530dbacf0447b5a62d6d196f6d6843b6",
+  "provenance_original_V22_score_json_sha256": "6a883a3e6a483d76a9832fb5cf55d11c344db89da167c89bd666e0832ec65f78",
+  "n_per_cohort": [
+    37,
+    33
+  ],
+  "scoring_metric": "uncensored pAffinity=-log10(molar Ki or Kd), higher is stronger",
+  "arms": {
+    "Dyna-real-3D": {
+      "V21_MSE": 1.4961103108811766,
+      "V22_MSE": 2.0097276828091224,
+      "pooled70_Cindex_posthoc": 0.7285180572851806
+    },
+    "Dyna-shuffled-3D": {
+      "V21_MSE": 1.595477590278589,
+      "V22_MSE": 2.0416366636274437,
+      "pooled70_Cindex_posthoc": 0.7119136571191366
+    },
+    "Dyna-pocket-only": {
+      "V21_MSE": 1.731244842265023,
+      "V22_MSE": 2.109113795030074,
+      "pooled70_Cindex_posthoc": 0.7019510170195101
+    },
+    "Dyna-calibrated-2D": {
+      "V21_MSE": 2.3131516286790546,
+      "V22_MSE": 2.6752194984486666,
+      "pooled70_Cindex_posthoc": 0.66417600664176
+    },
+    "PerceiverCPI-original": {
+      "V21_MSE": 3.3343215879632266,
+      "V22_MSE": 4.0386908502084236,
+      "pooled70_Cindex_posthoc": 0.5653798256537983
+    }
+  },
+  "posthoc_pooled70_mse_relative_reduction_v_Perceiver": null,
+  "paper_claim_limits": [
+    "Not original authors' published DAVIS/KIBA/METZ fivefold comparison",
+    "Complete-system comparison, not matched DAVIS/ESM2 pretraining or bound-pose input access",
+    "Correct real 3D interatomic distance gain over learned shuffled geometry not significant",
+    "Posthoc pooled70 and all ranking metrics not original preregistered endpoints",
+    "Source labels and raw test predictions not part of this release"
+  ]
+}

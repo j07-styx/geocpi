@@ -1,0 +1,234 @@
+{
+  "status": "V48_AGGREGATE_ONLY_SHA_VERIFIED_POSTHOC_FULL_DAVIS_PERCEIVER_FAIRNESS",
+  "evaluation": "BioLiP3 historical Ki/Kd native Xray bound, 37+33 from same research database",
+  "original_code_revision": "755f076ef51099a90332fd1ec8437f94e3750c0b",
+  "comparator_training": "3 original Perceiver source DAVIS members x45epochs; 4 old HiQ349 TRAIN-only group folds x3 members x150 epochs; no new external Y used to train",
+  "n_first": 37,
+  "n_second": 33,
+  "n_posthoc_pooled": 70,
+  "models": {
+    "DynaCPI-real-3D": {
+      "V21_37": {
+        "MSE": 1.4961103108811766,
+        "RMSE": 1.2231558816770562,
+        "MAE": 0.989460658640384,
+        "R2": 0.24851413758557817,
+        "Cindex": 0.7308270676691729,
+        "Pearson_r": 0.6148349700724418,
+        "Spearman_rho": 0.6482129108654414
+      },
+      "V22_33": {
+        "MSE": 2.0097276828091224,
+        "RMSE": 1.417648645754343,
+        "MAE": 1.1174132830883312,
+        "R2": 0.461752914110641,
+        "Cindex": 0.7371428571428571,
+        "Pearson_r": 0.7292650871301807,
+        "Spearman_rho": 0.6840521947013567
+      },
+      "posthoc_pooled70": {
+        "MSE": 1.7382442147900659,
+        "RMSE": 1.3184248991846543,
+        "MAE": 1.0497811815944165,
+        "R2": 0.3926677184935965,
+        "Cindex": 0.7285180572851806,
+        "Pearson_r": 0.6709052891418883,
+        "Spearman_rho": 0.6583554249767163
+      }
+    },
+    "DynaCPI-shuffled-3D": {
+      "V21_37": {
+        "MSE": 1.595477590278589,
+        "RMSE": 1.2631221596815523,
+        "MAE": 1.021907482225481,
+        "R2": 0.19860264034460384,
+        "Cindex": 0.7157894736842105,
+        "Pearson_r": 0.5758463537946299,
+        "Spearman_rho": 0.6272301593615673
+      },
+      "V22_33": {
+        "MSE": 2.0416366636274432,
+        "RMSE": 1.4288585177082591,
+        "MAE": 1.1142575223331463,
+        "R2": 0.45320702200492347,
+        "Cindex": 0.7352380952380952,
+        "Pearson_r": 0.7245022903120392,
+        "Spearman_rho": 0.6686727220932127
+      },
+      "posthoc_pooled70": {
+        "MSE": 1.8058097248573346,
+        "RMSE": 1.343804198853886,
+        "MAE": 1.065443929704809,
+        "R2": 0.3690607275822221,
+        "Cindex": 0.7119136571191366,
+        "Pearson_r": 0.6422294006219615,
+        "Spearman_rho": 0.6274026065324539
+      }
+    },
+    "DynaCPI-calibrated-2D": {
+      "V21_37": {
+        "MSE": 2.3131516286790546,
+        "RMSE": 1.5209048716731282,
+        "MAE": 1.2816406082525718,
+        "R2": -0.16188006588189485,
+        "Cindex": 0.6240601503759399,
+        "Pearson_r": 0.41468905519755717,
+        "Spearman_rho": 0.37804516692573015
+      },
+      "V22_33": {
+        "MSE": 2.6752194984486666,
+        "RMSE": 1.6356098246368742,
+        "MAE": 1.2956989353774127,
+        "R2": 0.2835202940819783,
+        "Cindex": 0.72,
+        "Pearson_r": 0.6630758228844778,
+        "Spearman_rho": 0.6011367771617983
+      },
+      "posthoc_pooled70": {
+        "MSE": 2.483840767284729,
+        "RMSE": 1.5760205478624727,
+        "MAE": 1.2882681053257112,
+        "R2": 0.13216067842582213,
+        "Cindex": 0.66417600664176,
+        "Pearson_r": 0.5296218007506739,
+        "Spearman_rho": 0.47620797443699336
+      }
+    },
+    "PerceiverCPI-original-HiQ349": {
+      "V21_37": {
+        "MSE": 3.3343215879632266,
+        "RMSE": 1.8260124829702635,
+        "MAE": 1.5390882932785341,
+        "R2": -0.6748066742630559,
+        "Cindex": 0.5473684210526316,
+        "Pearson_r": 0.031973544604540244,
+        "Spearman_rho": 0.12506668269258242
+      },
+      "V22_33": {
+        "MSE": 4.0386908502084236,
+        "RMSE": 2.0096494346548166,
+        "MAE": 1.6895360057127873,
+        "R2": -0.08164583666092806,
+        "Cindex": 0.5942857142857143,
+        "Pearson_r": 0.258931370091075,
+        "Spearman_rho": 0.2517552798680946
+      },
+      "posthoc_pooled70": {
+        "MSE": 3.6663813830216774,
+        "RMSE": 1.9147797218013558,
+        "MAE": 1.6100136434261108,
+        "R2": -0.2810120415053914,
+        "Cindex": 0.5653798256537983,
+        "Pearson_r": 0.14287659176053585,
+        "Spearman_rho": 0.1789279374850343
+      }
+    },
+    "PerceiverCPI-original-DAVIS45-HiQ349": {
+      "V21_37": {
+        "MSE": 2.9769327050383083,
+        "RMSE": 1.725379003302842,
+        "MAE": 1.4870389037836034,
+        "R2": -0.49529270998593256,
+        "Cindex": 0.47218045112781953,
+        "Pearson_r": -0.0889957406304474,
+        "Spearman_rho": -0.09566712126342561
+      },
+      "V22_33": {
+        "MSE": 4.019976147014047,
+        "RMSE": 2.0049878171734727,
+        "MAE": 1.683212061008549,
+        "R2": -0.07663364792320926,
+        "Cindex": 0.4419047619047619,
+        "Pearson_r": -0.049972757956452715,
+        "Spearman_rho": -0.08659311751107104
+      },
+      "posthoc_pooled70": {
+        "MSE": 3.468653184826871,
+        "RMSE": 1.8624320618016839,
+        "MAE": 1.5795205350467922,
+        "R2": -0.21192697468564914,
+        "Cindex": 0.45703611457036114,
+        "Pearson_r": -0.07310921603740968,
+        "Spearman_rho": -0.10944594650585661
+      }
+    }
+  },
+  "contrasts_predeclared_before_V28_completion": {
+    "Dyna_REAL3D_minus_FullDAVISpretrainedOriginalPerceiver": {
+      "pooled_mae_delta": -0.5297393534523758,
+      "pooled_cindex_delta": 0.27148194271481946,
+      "MAE_95pct_stratified_case_CI": [
+        -0.6849681997134639,
+        -0.3740576022370389
+      ],
+      "Cindex_95pct_stratified_case_CI": [
+        0.17299395651036523,
+        0.3647155540124986
+      ],
+      "MAE_nominal_excludes0": true,
+      "Cindex_nominal_excludes0": true
+    },
+    "Dyna_2D_minus_FullDAVISpretrainedOriginalPerceiver": {
+      "pooled_mae_delta": -0.291252429721081,
+      "pooled_cindex_delta": 0.20713989207139888,
+      "MAE_95pct_stratified_case_CI": [
+        -0.3882952599428293,
+        -0.19670784498810784
+      ],
+      "Cindex_95pct_stratified_case_CI": [
+        0.1015517587898838,
+        0.312421052631579
+      ],
+      "MAE_nominal_excludes0": true,
+      "Cindex_nominal_excludes0": true
+    },
+    "Dyna_REAL3D_minus_OriginalHiQ349onlyPerceiver": {
+      "pooled_mae_delta": -0.5602324618316943,
+      "pooled_cindex_delta": 0.1631382316313823,
+      "MAE_95pct_stratified_case_CI": [
+        -0.7353765146551077,
+        -0.3855854420841458
+      ],
+      "Cindex_95pct_stratified_case_CI": [
+        0.06934854004526132,
+        0.25724512061037375
+      ],
+      "MAE_nominal_excludes0": true,
+      "Cindex_nominal_excludes0": true
+    },
+    "Dyna_REAL3D_minus_Dyna_SHUFFLED3D": {
+      "pooled_mae_delta": -0.015662748110392588,
+      "pooled_cindex_delta": 0.01660440016604403,
+      "MAE_95pct_stratified_case_CI": [
+        -0.056407477565810694,
+        0.02477031733528822
+      ],
+      "Cindex_95pct_stratified_case_CI": [
+        -0.005065428450823031,
+        0.039508598445514284
+      ],
+      "MAE_nominal_excludes0": false,
+      "Cindex_nominal_excludes0": false
+    }
+  },
+  "DynaCPI_real3D_MSE_reduction_vs_original_fully_DAVISpretrained_Perceiver_posthoc": 0.49887056382754913,
+  "source_SHA256": {
+    "original_V21_37_once_score": "34856bb33039f6bb86d5a8809d25ae42530dbacf0447b5a62d6d196f6d6843b6",
+    "original_V22_33_once_score": "6a883a3e6a483d76a9832fb5cf55d11c344db89da167c89bd666e0832ec65f78",
+    "full_V28_source_training_manifest": "3ab4792c2cfb42d4bcbe1d0ef77373dd18d5d354d3ed78bef8bb007955159026",
+    "full_original_V28_label_free_prediction_manifest": "76fd9058dac9f80339d557df2f3fc9c3ba0f924d0fa2bf97b5b01624e108eea9",
+    "full_V28_first_score": "a791dd8c012bfd8ebb9f18d80b0f9231a2c576ae217fb95d8814565b0274660b",
+    "frozen_V42_plan": "b74258e7fa8b82240e77078c715112f38479a6092fb3983956cc0fe3191dd2b0",
+    "independent_V42_analysis": "00b21be1a6f1eefc654f336b4c384800921d7bff5415c25e864c05552c1a36ff"
+  },
+  "claims": {
+    "new_blind_test": false,
+    "reproduced_original_Perceiver_official_DAVIS_KIBA_METZ_fivefold": false,
+    "same_DAVIS_supervised_source": true,
+    "same_ESM2_pretrained_representations_or_native_bound_3D_information": false,
+    "correct_3D_distances_real_vs_shuffled_significant": false,
+    "posthoc_bootstraps_adjusted_for_multiple_comparisons": false,
+    "both_BioLiP3_cohorts_from_same_source": true
+  },
+  "private": "no per-record assay labels or model predictions included"
+}

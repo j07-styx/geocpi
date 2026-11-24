@@ -1,0 +1,63 @@
+/* Independent GeoFuse DAVIS glossary view */
+.glossary-hero{display:flex;justify-content:space-between;align-items:end;gap:24px;padding:37px 0 28px}
+.glossary-hero h1{font:600 clamp(30px,3.1vw,42px)/1.13 "Space Grotesk",sans-serif;letter-spacing:-1.45px;margin:12px 0 9px}
+.glossary-hero h1 span{color:#a4b3ff}
+.glossary-hero p{max-width:720px;color:#acbfd8;font-size:13px;line-height:1.65}
+.glossary-stat{min-width:195px;display:flex;align-items:flex-end;flex-direction:column;gap:3px;border-left:2px solid #47658e;padding-left:20px}
+.glossary-stat strong{font:600 30px/1.2 "Space Grotesk",sans-serif;color:#e8edff;letter-spacing:-1px}
+.glossary-stat small{font-size:11px;color:#95a8c2}
+.glossary-panel{background:linear-gradient(144deg,#1a263b,#131d2f);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 22px 55px #0208171e}
+.glossary-panel-title{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:21px 24px;border-bottom:1px solid #2b3b53}
+.glossary-panel-title h2{font:600 19px "Space Grotesk",sans-serif}
+.glossary-panel-title p{font-size:11px;color:#98a9c4;margin-top:5px}
+.glossary-source-badge{font:700 10px "Space Grotesk",sans-serif;letter-spacing:.4px;white-space:nowrap;padding:9px 11px;border:1px solid #387669;border-radius:999px;background:#153d3e;color:#97ecdb}
+.glossary-controls{display:grid;grid-template-columns:minmax(165px,1.3fr) minmax(165px,1.3fr) minmax(160px,1fr) minmax(160px,1fr);gap:13px;padding:20px 24px 18px}
+.glossary-control{display:flex;flex-direction:column;gap:8px;min-width:0}
+.glossary-control>span{color:#d7e2f5;font-size:11.5px;font-weight:700}
+.glossary-control input,.glossary-control select{height:43px;width:100%;min-width:0;border:1px solid #3b4e6a;border-radius:9px;background:#111a2b;color:#eff3ff;padding:0 12px;font-size:12px;outline:0}
+.glossary-control input::placeholder{color:#7389a7}
+.glossary-control input:focus,.glossary-control select:focus{border-color:#97aeef;box-shadow:0 0 0 3px #8c9fff21}
+.glossary-count{padding:10px 24px 14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:11.5px;color:#9fb2cc}
+.glossary-count strong{color:#e9f2ff}
+.glossary-scroll{width:100%;overflow-x:auto;overscroll-behavior-x:contain;border-top:1px solid #33465e;border-bottom:1px solid #33465e}
+.glossary-table{width:100%;min-width:1080px;border-collapse:collapse;table-layout:fixed;text-align:left}
+.glossary-table .col-compound{width:18%}
+.glossary-table .col-smiles{width:27%}
+.glossary-table .col-protein{width:13%}
+.glossary-table .col-sequence{width:29%}
+.glossary-table .col-affinity{width:13%}
+.glossary-table th{position:sticky;top:0;z-index:1;padding:14px 16px;background:#23344e;color:#d5e2f8;border-right:1px solid #364965;text-align:left;font:700 11px "Space Grotesk",sans-serif;letter-spacing:.3px}
+.glossary-table th:last-child{border-right:none}
+.glossary-table td{vertical-align:top;padding:17px 16px 19px;border-top:1px solid #2a3b53;color:#dee6f6;overflow-wrap:anywhere;font-size:12px}
+.glossary-table tbody tr:nth-child(odd){background:#152135}
+.glossary-table tbody tr:hover{background:#20314b}
+.glossary-drug-name,.glossary-protein-name{display:block;font:700 13px/1.45 "Space Grotesk",sans-serif;color:#eef3ff}
+.glossary-cid{display:block;margin-top:7px;color:#9caed4;font-size:10.5px;text-decoration:underline;text-decoration-color:#667da5;text-underline-offset:3px}
+.glossary-use{display:block;margin-top:13px;border:1px solid #566d9e;border-radius:7px;background:#2a4165;color:#d4e1ff;padding:8px 9px;font-size:10.5px;font-weight:700}
+.glossary-use:hover{background:#415b85}
+.glossary-code{display:block;color:#bcd2eb;font:500 11px/1.7 "Space Grotesk",monospace;overflow-wrap:anywhere;word-break:break-all}
+.glossary-copy{border:0;padding:0;margin-top:9px;color:#93e4da;background:transparent;font-size:10.5px;font-weight:700}
+.glossary-copy:hover{text-decoration:underline}
+.glossary-sequence summary{cursor:pointer;color:#c4d7f2}
+.glossary-sequence summary code{font:500 10.5px/1.65 "Space Grotesk",monospace;word-break:break-all}
+.glossary-sequence summary span{display:block;margin-top:5px;color:#9daed1;font-size:10.5px}
+.glossary-sequence[open] summary{margin-bottom:10px}
+.glossary-sequence-full{display:block;max-height:180px;overflow-y:auto;padding:10px;border:1px solid #425676;border-radius:7px;background:#101b2c;color:#c3d9f4;font:500 10px/1.65 "Space Grotesk",monospace;overflow-wrap:anywhere;word-break:break-all}
+.glossary-affinity{display:block;font:700 15px/1.3 "Space Grotesk",sans-serif;color:#9ce8d7;white-space:nowrap}
+.glossary-affinity small{font-size:10px;font-weight:600;letter-spacing:0}
+.glossary-affinity.cutoff{color:#c9bac1;font-size:13px}
+.glossary-pkd{display:block;margin-top:6px;font-size:11px;color:#b5c6dc}
+.glossary-cutoff-label{display:inline-block;margin-top:9px;padding:5px 6px;background:#423a3f;border:1px solid #63565e;border-radius:6px;color:#d5c2c7;font-size:9px}
+.glossary-no-results{text-align:center;padding:45px 20px!important;color:#c3d3ec!important}
+.glossary-message{padding:60px 24px;text-align:center;color:#c2d5ee;font-size:13px}
+.glossary-pagination{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:16px 23px;color:#a9bad7;font-size:12px}
+.glossary-pagination>div{display:flex;gap:8px}
+.glossary-pagination button{border:1px solid #48607c;border-radius:7px;background:#243651;color:#dce8fd;min-height:33px;min-width:35px;padding:6px 11px;font-size:11px}
+.glossary-pagination button:hover:not(:disabled){background:#354c71}
+.glossary-pagination button:disabled{opacity:.38}
+.glossary-footnote{margin-top:18px;padding:18px 21px;border:1px solid #354b69;background:#17273d;border-radius:12px}
+.glossary-footnote strong{font:600 13px "Space Grotesk",sans-serif;color:#ebf1ff}
+.glossary-footnote p{color:#aebfda;font-size:11.5px;line-height:1.75;margin-top:9px}
+.glossary-footnote a{color:#b4d3ff;text-decoration:underline;text-underline-offset:2px}
+@media(max-width:1130px){.glossary-controls{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.glossary-hero{padding:27px 0 22px}.glossary-stat{display:none}.glossary-hero h1{font-size:32px}.glossary-hero p{font-size:12px}.glossary-panel-title{padding:17px}.glossary-panel-title p{line-height:1.5}.glossary-source-badge{display:none}.glossary-controls{padding:16px;grid-template-columns:1fr}.glossary-count{padding:4px 16px 12px}.glossary-pagination{padding:14px;align-items:flex-start;flex-direction:column}.glossary-footnote{padding:16px}}

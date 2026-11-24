@@ -1,0 +1,16 @@
+{
+  "status": "PASS_PREPARED_FEATURE_HISTORICAL_TRAIN349_SOURCE_ONLY_EXACT_REPLAY",
+  "n_old_source_TRAIN_affinities": 349,
+  "n_original_source_protein_folds": 4,
+  "n_original_geometry_models_tensor_exact": 12,
+  "max_absolute_checkpoint_parameter_difference": 0.0,
+  "n_external_label_free_predictions_exact": 37,
+  "max_absolute_external_NO_Y_prediction_difference": 0.0,
+  "source_prediction_proof_audit_SHA256": "1ca8e18b2fc45a1cd323e8853f1301acfa78506c79af28ace2f328cfa0aba972",
+  "source_checkpoint_proof_audit_SHA256": "bf05f1617287440b3271d0b01d7ef8a67bda68e026540168f9616f1907f4ee73",
+  "original_prediction_archive_SHA256": "3c438a760272ddda8469ca499f2b46ea87df3ae283a505b4d532cbc76ecfa30f",
+  "feature_level_only": true,
+  "fresh_3D_feature_generation_from_raw_PDB_SMILES_in_public_release": false,
+  "numeric_external_affinity_Y_accessed": false,
+  "original_training_private_source_labels_not_distributed": true
+}
