@@ -1,0 +1,4 @@
+-r ../requirements.txt
+flask>=3,<4
+rdkit>=2024.9
+fair-esm==2.0.0

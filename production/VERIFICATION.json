@@ -1,0 +1,51 @@
+{
+  "source_syntax": "pass",
+  "known_protein_inference": "pass",
+  "invalid_smiles_guard": "pass",
+  "no_heldout_training_metrics": "pass",
+  "parity_cases": [
+    {
+      "protein_index": 0,
+      "ligand_index": 0,
+      "portable_pKd": 7.134586,
+      "live_pKd": 7.134586,
+      "match_within_2e-6": true
+    },
+    {
+      "protein_index": 50,
+      "ligand_index": 10,
+      "portable_pKd": 5.138769,
+      "live_pKd": 5.138769,
+      "match_within_2e-6": true
+    },
+    {
+      "protein_index": 200,
+      "ligand_index": 35,
+      "portable_pKd": 7.664532,
+      "live_pKd": 7.664532,
+      "match_within_2e-6": true
+    },
+    {
+      "protein_index": 441,
+      "ligand_index": 67,
+      "portable_pKd": 5.0,
+      "live_pKd": 5.0,
+      "match_within_2e-6": true
+    },
+    {
+      "protein_index": 0,
+      "ligand_index": null,
+      "portable_pKd": 5.765342,
+      "live_pKd": 5.765342,
+      "match_within_2e-6": true
+    },
+    {
+      "protein_index": 200,
+      "ligand_index": null,
+      "portable_pKd": 7.889996,
+      "live_pKd": 7.889996,
+      "match_within_2e-6": true
+    }
+  ],
+  "scope": "Known DAVIS proteins and known/unseen ligands; novel protein ESM2 inference not exercised in this portable release test. Native source compiled only; historical replay unchanged."
+}

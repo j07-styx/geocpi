@@ -1,0 +1,211 @@
+{
+  "scope": "Production architecture synchronization; source snapshots and portable v6 inference; V48 original public replay retained; no experimental SaProt or V363 promotion",
+  "direct_2d": {
+    "version": "v6-final-all-davis-refit",
+    "training_pairs": 30056,
+    "proteins": 442,
+    "ligands": 68,
+    "seeds": [
+      2931,
+      2932
+    ],
+    "independent_test": false,
+    "bundle_sha256": "99f222dd728fe9f04ac21d7b0920d6677a2e5b64917525ab29e0314440c0d428"
+  },
+  "native_3d": {
+    "version": "V48",
+    "backbone": "frozen v5",
+    "training_pairs": 349,
+    "folds": 4,
+    "native_pairs": 660,
+    "catalog_records": 10224,
+    "expanded_precomputed_rows": 6744,
+    "assets": [
+      {
+        "file": "runs/v48_train349_source_fourfold_replay/fold_0/calibrators.joblib",
+        "sha256": "d8347db3f0767b1c8468fe5378d4debd30ef9dd6ccd31e41d7bf2cf80ebeaaad",
+        "bytes": 580606
+      },
+      {
+        "file": "runs/v48_train349_source_fourfold_replay/fold_0/pocket.pt",
+        "sha256": "0b469b3aa3bee84537aabc6e4fdf4e377867c576233a579fac81ec49ea8b6675",
+        "bytes": 192575
+      },
+      {
+        "file": "runs/v48_train349_source_fourfold_replay/fold_0/pocket_norm.npz",
+        "sha256": "618fa565a8012f271abbc76e375e09f048db2eae2a9e8a0b3b8a3fb974d7345a",
+        "bytes": 3225
+      },
+      {
+        "file": "runs/v48_train349_source_fourfold_replay/fold_0/real.pt",
+        "sha256": "aaaeda53baf2fc86a869201b717609c7f32dcc83895c581d613e856b02b91dc9",
+        "bytes": 192547
+      },
+      {
+        "file": "runs/v48_train349_source_fourfold_replay/fold_0/real_norm.npz",
+        "sha256": "3c2d6e70e29ef6de573b0b6a6d332ffec42fc65dbb3cb50a5b1f10dd825b4265",
+        "bytes": 3480
+      },
+      {
+        "file": "runs/v48_train349_source_fourfold_replay/fold_0/shuffled.pt",
+        "sha256": "89dd0c280cbc2187c88e1073e3f58856593d77ada30e32032fe13692fc1b1ea3",
+        "bytes": 193051
+      },
+      {
+        "file": "runs/v48_train349_source_fourfold_replay/fold_0/shuffled_norm.npz",
+        "sha256": "c387f997c354bb9af5e4193766731379de72e207cab3069d2e3a670ab526a47e",
+        "bytes": 3488
+      },
+      {
+        "file": "runs/v48_train349_source_fourfold_replay/fold_1/calibrators.joblib",
+        "sha256": "03ee2d526617aa14107d61c11866653cf28e3031dddfae20d3406afa25d8d30f",
+        "bytes": 579626
+      },
+      {
+        "file": "runs/v48_train349_source_fourfold_replay/fold_1/pocket.pt",
+        "sha256": "8bcca9a5f02e1cfe0ffdabbd564b77598585040e52a39bbb7d5a119247349cdb",
+        "bytes": 192575
+      },
+      {
+        "file": "runs/v48_train349_source_fourfold_replay/fold_1/pocket_norm.npz",
+        "sha256": "12ad5047ba8562144cdbff91ea9245917bbd6d623bb6c7b5aab4ec5b14a85210",
+        "bytes": 3116
+      },
+      {
+        "file": "runs/v48_train349_source_fourfold_replay/fold_1/real.pt",
+        "sha256": "505f5e52b6c3bd13a880b709fb65f115f3d7c065ce5781ec0dab47ca39671898",
+        "bytes": 192547
+      },
+      {
+        "file": "runs/v48_train349_source_fourfold_replay/fold_1/real_norm.npz",
+        "sha256": "6bf1de0d8c5d650ab5b1396ad1b776ab0de9018bcf58b16cf9b440c4e013f011",
+        "bytes": 3445
+      },
+      {
+        "file": "runs/v48_train349_source_fourfold_replay/fold_1/shuffled.pt",
+        "sha256": "f37dec488c9296f79882412af476e23c30169d6351196c0c8b75fc1c3385f637",
+        "bytes": 193051
+      },
+      {
+        "file": "runs/v48_train349_source_fourfold_replay/fold_1/shuffled_norm.npz",
+        "sha256": "cef9beeaae4b4b5e4935dc8e6f7d447846b31fcb8c576bc67cd01e095d08bdfb",
+        "bytes": 3437
+      },
+      {
+        "file": "runs/v48_train349_source_fourfold_replay/fold_2/calibrators.joblib",
+        "sha256": "085b53b1f2eaeb8c474ab46834a76641b49a143454060fe24b17b188f87ccbf0",
+        "bytes": 580646
+      },
+      {
+        "file": "runs/v48_train349_source_fourfold_replay/fold_2/pocket.pt",
+        "sha256": "c9622f068925444555e2aa9703cc5dd6e272ad54cb767314b92e27871564135b",
+        "bytes": 192575
+      },
+      {
+        "file": "runs/v48_train349_source_fourfold_replay/fold_2/pocket_norm.npz",
+        "sha256": "1cbec3290f3318fb606cc6c19a468faa98cfa87921e4445e0e8facbb928cd412",
+        "bytes": 3135
+      },
+      {
+        "file": "runs/v48_train349_source_fourfold_replay/fold_2/real.pt",
+        "sha256": "fa088da442ecd1e0c9dd7ca3adea967f6ea95645702d688ea1cb10c6c551fc5c",
+        "bytes": 192547
+      },
+      {
+        "file": "runs/v48_train349_source_fourfold_replay/fold_2/real_norm.npz",
+        "sha256": "ef197fa5021082aaf7f2a5d6e39cf3b1a385b667d7a7bae54eccaf7a8099573f",
+        "bytes": 3445
+      },
+      {
+        "file": "runs/v48_train349_source_fourfold_replay/fold_2/shuffled.pt",
+        "sha256": "f0123406da55821b24da7b320420ea9c4be5afc7da73dd813b127ed2671e7ab8",
+        "bytes": 193051
+      },
+      {
+        "file": "runs/v48_train349_source_fourfold_replay/fold_2/shuffled_norm.npz",
+        "sha256": "1b1b31eaf2ae8806a664bce34540e4ba5ac294cbbddaa70832e3ad9e7f52882e",
+        "bytes": 3463
+      },
+      {
+        "file": "runs/v48_train349_source_fourfold_replay/fold_3/calibrators.joblib",
+        "sha256": "0bce89254173a085d5fd1f442bcfb5859d6cae369d5b622dd4d54f55949ad6be",
+        "bytes": 581683
+      },
+      {
+        "file": "runs/v48_train349_source_fourfold_replay/fold_3/pocket.pt",
+        "sha256": "0cd9baf085d0ccee5f7ca3a88c6049af42b2f20ea5ec65b5e2bed2b8a1b2f946",
+        "bytes": 192575
+      },
+      {
+        "file": "runs/v48_train349_source_fourfold_replay/fold_3/pocket_norm.npz",
+        "sha256": "559fa724d4f172e6144352be7bc4c6217671d1e938b6e4ebfe58cc6860393153",
+        "bytes": 3145
+      },
+      {
+        "file": "runs/v48_train349_source_fourfold_replay/fold_3/real.pt",
+        "sha256": "d0f71b837edb9417b2020e8c7478574191c9480c6be94d2d209a8ebb9d5517f7",
+        "bytes": 192547
+      },
+      {
+        "file": "runs/v48_train349_source_fourfold_replay/fold_3/real_norm.npz",
+        "sha256": "fcccfdb9d78c96f750330f249e66cc674a74f47e3999394d61b99f973268cbb8",
+        "bytes": 3445
+      },
+      {
+        "file": "runs/v48_train349_source_fourfold_replay/fold_3/shuffled.pt",
+        "sha256": "bec7b6511368e193361f63ed161405046c1b347cb2feaef6cdde327b740f10b6",
+        "bytes": 193051
+      },
+      {
+        "file": "runs/v48_train349_source_fourfold_replay/fold_3/shuffled_norm.npz",
+        "sha256": "a12778f1281c1f20c79300221087c6de3512a63e3d57bdc5a04f65273d58c559",
+        "bytes": 3419
+      },
+      {
+        "file": "runs/v48_train349_source_fourfold_replay/run.json",
+        "sha256": "ced6ebe156bc5266ddca32a243dbf755042d2c1d9a43aceda0366496608164a9",
+        "bytes": 1338
+      },
+      {
+        "file": "private/v51_raw660_structures/raw660.csv",
+        "sha256": "d3f0ca6ce2869abce8945ec16a60efb3ca436223acbf5e7db3a1dd866aeef60c",
+        "bytes": 150990
+      },
+      {
+        "file": "private/v51_raw660_RDKIT2025_features_noY.npz",
+        "sha256": "914ccfa85a0cc2c45a82a925380a36e6b349b17876adf4ad026a9f9aa31d619a",
+        "bytes": 2141951
+      }
+    ]
+  },
+  "source_snapshots": {
+    "production/direct2d/train_full_davis_v5.py": {
+      "sha256": "9fbb8f5ba09d71beca39998f559d457664f09dce709206cc8a57da9510863a8f",
+      "source": "train_full_davis_v5.py"
+    },
+    "production/direct2d/train_full_davis_final_v6.py": {
+      "sha256": "429d0ab8e42941720cbd7680ae15b6cef6c04291afdca2a6cf1d696a6f835fc7",
+      "source": "train_full_davis_final_v6.py"
+    },
+    "production/direct2d/serve_full_davis_final_v6.py": {
+      "sha256": "e003ad00e5a928eb1e78198a2e9105cceb6f77923626c24ed63702c36de956ac",
+      "source": "serve_full_davis_final_v6.py"
+    },
+    "production/native3d/backend.py": {
+      "sha256": "e4b56efd5c29a8969dc388e880cd03aa65ea9b8bc74d75b4631bb00883e11e55",
+      "source": "backend.py"
+    },
+    "production/native3d/geocpi_bridge.py": {
+      "sha256": "c6f23a030f28e94ead1656e7c6565e5ee9b2598367545ceb5ba142f67aa72bad",
+      "source": "geocpi_bridge.py"
+    },
+    "production/native3d/native_catalog.py": {
+      "sha256": "80897565009791d8a0ebf0079d612428daf3dbc1a642ca99121030d7f5fb6524",
+      "source": "native_catalog.py"
+    },
+    "production/native3d/expanded_native_inference.py": {
+      "sha256": "a0482c697b5861e83ced1c69cbd7d2828e11fcdcfb780a3082ad26429ddf0f35",
+      "source": "expanded_native_inference.py"
+    }
+  }
+}

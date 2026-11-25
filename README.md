@@ -6,6 +6,10 @@ A frozen **GeoFuse-CPI 2D (v5)** protein/compound backbone with a small **47,361
 
 ![Full DAVIS-pretrained PerceiverCPI comparison](figures/davis-matched-comparison.png)
 
+## Current production architecture
+
+The local production system uses the **v6 two-seed direct 2D model** and the **V48 native 3D residual** (frozen v5 backbone). See [production architecture and portable 2D inference](production/README.md). The historical benchmark release below remains unchanged; the full-data v6 refit has no independent held-out test score.
+
 ## Reproduce the reported benchmarks
 
 The published BioLiP3 and OpenBind benchmark tables can be recomputed on CPU using the released frozen feature inputs and trained GeoFuse-CPI geometry heads. No private research directory, GPU or ESM2 download is needed for this feature-level replay.

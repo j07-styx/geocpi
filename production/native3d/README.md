@@ -1,0 +1,5 @@
+# Native 3D production source snapshot
+
+These files are copied from the local V48 native-serving implementation. The fourfold source-trained architecture is retained; see ../../reproduction/README.md for the portable published benchmark replay. To serve the full native catalog, supply the original trusted asset directories (not redistributed): DYNACPI_3D_PAPER points at a directory containing src/dynacpi3d, runs/v48_train349_source_fourfold_replay, private/v51_raw660_structures/raw660.csv and private/v51_raw660_RDKIT2025_features_noY.npz. GEOFUSE_NATIVE_CATALOG points to the catalog containing CATALOG_NOY.json, PAIR_INDEX_NOY.json, RESULT.json and referenced structures. Expanded inference additionally needs the matching local log artifacts specified in geocpi_bridge.py. Run python geocpi_bridge.py locally (default port 8786). This snapshot is not a self-contained catalog distribution; the existing replay is the portable benchmark path. Never load untrusted checkpoints/joblib files.
+
+Exact native pairs are distinct from expanded research scores; expanded scores do not certify assay constructs and are not docking predictions.
