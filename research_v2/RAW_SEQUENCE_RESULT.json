@@ -1,0 +1,14 @@
+{
+  "status": "PASS_CPU_RAW_SEQUENCE_SMILES",
+  "scope": "Fresh float32 CPU ESM2 encoding with final fp16 storage rounding; training used cached half-precision representations. One known protein parity and synthetic novel sequence smoke test, not affinity validation. No test labels or benchmark row indices used for novel inference.",
+  "known_name": "TESK1",
+  "known_length": 244,
+  "embedding_cosine": 0.9999991059303284,
+  "known_prediction_abs_error": 9.128830223570361e-05,
+  "novel_sequence_sha": "1feffcbd5ac4a15fd9c9adb414af734cde34ac6b48564b4c604a468a49245c40",
+  "novel_predictions": {
+    "davis": 5.407754574040727,
+    "kiba": 11.143654569328731,
+    "metz": 5.20565253848733
+  }
+}

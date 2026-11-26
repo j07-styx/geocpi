@@ -1,0 +1,18 @@
+{
+  "status": "BLOCKED_NO_ELIGIBLE_COHORT",
+  "existing_preflights": {
+    "v324_unused_biolip_kd_preflight_20261124": {
+      "selected": 1,
+      "scoring_authorized": false
+    },
+    "v394_unused_biolip_ki_preflight_20261125": {
+      "selected": 0,
+      "scoring_authorized": false
+    }
+  },
+  "protocol": {
+    "checkpoint_sha": "b30fd7f5054ea6352d53c2dc854ce0af9cd7d163970c5c4b4b0b7591772d97f4",
+    "selection": "New source, no previously evaluated cases, exact compound/protein/pair and cross-source scaffold/homology checks, assay provenance and endpoint verification before labels, native pose QA for geometry arm. Minimum 30 distinct eligible complexes as feasibility floor, sample size/power justification before scoring. Freeze all predictions and comparator input IDs before labels. No tuning on resulting outcomes.",
+    "primary": "Paired RMSE delta real versus matched 2D for native geometry; secondary shuffled/pocket, ranking metrics. For sequence prediction primary RMSE, secondary Pearson/CI. Group-aware intervals, report all outcomes and adjust confirmatory multiple contrasts."
+  }
+}

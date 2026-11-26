@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "max_abs_by_cohort": {
+    "davis__double_cold": 1.7763568394002505e-15,
+    "kiba__double_cold": 1.7763568394002505e-15,
+    "metz__double_cold": 8.881784197001252e-16,
+    "gensparc__original__seen_both": 2.96086191120537e-07,
+    "gensparc__original__unseen_comp": 2.562531244976185e-07,
+    "gensparc__original__unseen_prot": 3.103117434122282e-07,
+    "gensparc__original__unseen_both": 4.260788415422212e-07,
+    "gensparc__sequence_hard__seen_both": 4.17847960676454e-08,
+    "gensparc__sequence_hard__unseen_comp": 1.200070336437875e-07,
+    "gensparc__sequence_hard__unseen_prot": 4.16852701690118e-07,
+    "gensparc__sequence_hard__unseen_both": 6.581395002314139e-07,
+    "gensparc__structure_hard__seen_both": 4.404016182846249e-07,
+    "gensparc__structure_hard__unseen_comp": 3.331978772891375e-07,
+    "gensparc__structure_hard__unseen_prot": 3.8396304802290615e-07,
+    "gensparc__structure_hard__unseen_both": 8.143776497604449e-08
+  },
+  "max_abs": 6.581395002314139e-07,
+  "checkpoint_sha": "b30fd7f5054ea6352d53c2dc854ce0af9cd7d163970c5c4b4b0b7591772d97f4",
+  "scope": "Inference from stored parameters using original local feature sources; no raw-input portability claim."
+}

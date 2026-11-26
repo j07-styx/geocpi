@@ -1,0 +1,322 @@
+{
+  "paper_model": "GeoFuse-CPI V2.0",
+  "status": "FROZEN_SINGLE_RESEARCH_HYBRID_NOT_INDEPENDENTLY_VALIDATED",
+  "selection": "Existing frozen and replay-verified candidate, prior to later fusion experiments. No test-specific selection of checkpoints, no score stitching. All later variants excluded from headline results.",
+  "checkpoint_sha": "b30fd7f5054ea6352d53c2dc854ce0af9cd7d163970c5c4b4b0b7591772d97f4",
+  "prediction_sha": "b8f935e2115ead2b83e247477118adedd38559acf368b80eabafc160240f0555",
+  "source_checkpoint": "GEOFUSE_CPI_V2.pt",
+  "fit_rows": {
+    "davis": {
+      "before": 12780,
+      "after": 9144,
+      "validation": 550,
+      "test": {
+        "double_cold": 1339
+      }
+    },
+    "kiba": {
+      "before": 53045,
+      "after": 27299,
+      "validation": 3166,
+      "test": {
+        "double_cold": 3442
+      }
+    },
+    "metz": {
+      "before": 15320,
+      "after": 7288,
+      "validation": 658,
+      "test": {
+        "double_cold": 1416
+      }
+    },
+    "gensparc": {
+      "before": 2104,
+      "after": 2017,
+      "validation": 233,
+      "test": {
+        "original/seen_both": 591,
+        "original/unseen_comp": 521,
+        "original/unseen_prot": 795,
+        "original/unseen_both": 202,
+        "sequence_hard/seen_both": 265,
+        "sequence_hard/unseen_comp": 169,
+        "sequence_hard/unseen_prot": 106,
+        "sequence_hard/unseen_both": 189,
+        "structure_hard/seen_both": 269,
+        "structure_hard/unseen_comp": 191,
+        "structure_hard/unseen_prot": 161,
+        "structure_hard/unseen_both": 243
+      }
+    }
+  },
+  "feature_sources": {
+    "davis": [
+      "3c3abe55d09fc6b448849ef66e762d06f5f94136888a2198a2330e72903d04a0",
+      "abeab2cebcf138cb6c46d8fc54c0932142a5c1238e09335333f55dec76916742"
+    ],
+    "kiba": [
+      "8eb0e1b35e85b4131a1261da026c02167e74799cc132b34c97481a9359479352",
+      "01167adb7e91cb0015f2e5e3e3f73e432a0352efdd35809fb7ed0a0588cae8c5"
+    ],
+    "metz": [
+      "18b1254cf72154702be725b286a251126d3c0ab5e6301bd17b0cc24d63cb63a5",
+      "f3d926e7c397244e13d2868b4213ef2dcf98f019d6024d073712849349af52a5"
+    ],
+    "gensparc": [
+      "fef156ae5234b132961543d7951cd4e58a43c0f6dec46e5d067e9b67da0e67ef",
+      "15d293ebeb280c7d7a7f508561bba58410f35081525c16aa014ced8d4f026b70"
+    ]
+  },
+  "shared_replay_sha": "bd4c1eaf62077308b6d309c8d01362c8fb987c2f93a4b82cea4bf39d17d8d375",
+  "native_replay_sha": "5d7332bd94f9cd6ddafa2006e890ebd9dc54e75afb7192f276788e1742d47992",
+  "kinase_paired_audit_sha": "a31532622d430082882910b6afa2b791cea6c45d9cb0ec08e0507f2ea1abb51e",
+  "external_gate_sha": "a71c47dce44890a55bb8f87f2ca9eb2978ba2130bec3a912bfc84a0a64731f82",
+  "published_genSPARC_targets_sha": "a9614db128b212d6d9912832ee8bdc889bfde567f2b0de90eb40c4c0b1bb9a88",
+  "published_genSPARC_wins": 20,
+  "architecture_limit": "One fixed hybrid checkpoint with shared neural kinase trunk and task-specific similarity heads; separately trained native expert uses legacy anchor. GenSPARC uses structural tokens, not explicit native geometry. Not an end-to-end jointly trained 2D+3D network.",
+  "metrics": {
+    "davis__double_cold": {
+      "n": 1339,
+      "RMSE": 0.6216357600164232,
+      "Pearson": 0.1310523032695105,
+      "matched_rows_reproduced_comparator": {
+        "RMSE": 0.6827566837230846,
+        "MSE": 0.46615668916854425,
+        "MAE": 0.40847086283232936,
+        "CI": 0.5048321719199471,
+        "macro_RMSE": 0.5958128461760064
+      },
+      "comparison_type": "reproduced, not original published",
+      "CI": 0.6052386666051348,
+      "MAE": 0.38239617939826587
+    },
+    "kiba__double_cold": {
+      "n": 3442,
+      "RMSE": 0.7864487253933903,
+      "Pearson": 0.4516982798670369,
+      "matched_rows_reproduced_comparator": {
+        "RMSE": 0.9266801880866423,
+        "MSE": 0.8587361709922948,
+        "MAE": 0.6962526269876147,
+        "CI": 0.6227792315481314,
+        "macro_RMSE": 0.8630343002612172
+      },
+      "comparison_type": "reproduced, not original published",
+      "CI": 0.6356092542293577,
+      "MAE": 0.5310192357328207
+    },
+    "metz__double_cold": {
+      "n": 1416,
+      "RMSE": 0.8797443661466401,
+      "Pearson": 0.4865533279559922,
+      "matched_rows_reproduced_comparator": {
+        "RMSE": 1.0187376988813124,
+        "MSE": 1.0378264991219917,
+        "MAE": 0.8114589840005346,
+        "CI": 0.605603753770066,
+        "macro_RMSE": 1.0580082833689488
+      },
+      "comparison_type": "reproduced, not original published",
+      "CI": 0.626421243772601,
+      "MAE": 0.6779358388153761
+    },
+    "gensparc__original__seen_both": {
+      "n": 591,
+      "RMSE": 1.273590181288202,
+      "Pearson": 0.7782576455880137,
+      "original_published": {
+        "RMSE": 1.357,
+        "Pearson": 0.748
+      },
+      "wins": [
+        true,
+        true
+      ]
+    },
+    "gensparc__original__unseen_comp": {
+      "n": 521,
+      "RMSE": 1.1888544092180706,
+      "Pearson": 0.783539082743658,
+      "original_published": {
+        "RMSE": 1.221,
+        "Pearson": 0.787
+      },
+      "wins": [
+        true,
+        false
+      ]
+    },
+    "gensparc__original__unseen_prot": {
+      "n": 795,
+      "RMSE": 1.4667957106980303,
+      "Pearson": 0.5828635676158155,
+      "original_published": {
+        "RMSE": 1.551,
+        "Pearson": 0.526
+      },
+      "wins": [
+        true,
+        true
+      ]
+    },
+    "gensparc__original__unseen_both": {
+      "n": 202,
+      "RMSE": 1.5526648758227528,
+      "Pearson": 0.5877147143791782,
+      "original_published": {
+        "RMSE": 1.552,
+        "Pearson": 0.583
+      },
+      "wins": [
+        false,
+        true
+      ]
+    },
+    "gensparc__sequence_hard__seen_both": {
+      "n": 265,
+      "RMSE": 1.0458741721294853,
+      "Pearson": 0.8231883794087413,
+      "original_published": {
+        "RMSE": 1.121,
+        "Pearson": 0.805
+      },
+      "wins": [
+        true,
+        true
+      ]
+    },
+    "gensparc__sequence_hard__unseen_comp": {
+      "n": 169,
+      "RMSE": 1.2804708666310998,
+      "Pearson": 0.6564995782125339,
+      "original_published": {
+        "RMSE": 1.372,
+        "Pearson": 0.631
+      },
+      "wins": [
+        true,
+        true
+      ]
+    },
+    "gensparc__sequence_hard__unseen_prot": {
+      "n": 106,
+      "RMSE": 1.5464802985805433,
+      "Pearson": 0.582445891318339,
+      "original_published": {
+        "RMSE": 1.444,
+        "Pearson": 0.642
+      },
+      "wins": [
+        false,
+        false
+      ]
+    },
+    "gensparc__sequence_hard__unseen_both": {
+      "n": 189,
+      "RMSE": 1.4054861971254224,
+      "Pearson": 0.576058420942756,
+      "original_published": {
+        "RMSE": 1.624,
+        "Pearson": 0.522
+      },
+      "wins": [
+        true,
+        true
+      ]
+    },
+    "gensparc__structure_hard__seen_both": {
+      "n": 269,
+      "RMSE": 1.0445291912787849,
+      "Pearson": 0.821152074157764,
+      "original_published": {
+        "RMSE": 1.141,
+        "Pearson": 0.793
+      },
+      "wins": [
+        true,
+        true
+      ]
+    },
+    "gensparc__structure_hard__unseen_comp": {
+      "n": 191,
+      "RMSE": 1.370278504962578,
+      "Pearson": 0.6293943743988857,
+      "original_published": {
+        "RMSE": 1.411,
+        "Pearson": 0.618
+      },
+      "wins": [
+        true,
+        true
+      ]
+    },
+    "gensparc__structure_hard__unseen_prot": {
+      "n": 161,
+      "RMSE": 1.4239342582287329,
+      "Pearson": 0.6365343335326579,
+      "original_published": {
+        "RMSE": 1.519,
+        "Pearson": 0.582
+      },
+      "wins": [
+        true,
+        true
+      ]
+    },
+    "gensparc__structure_hard__unseen_both": {
+      "n": 243,
+      "RMSE": 1.3830102472476364,
+      "Pearson": 0.6065795480821027,
+      "original_published": {
+        "RMSE": 1.559,
+        "Pearson": 0.546
+      },
+      "wins": [
+        true,
+        true
+      ]
+    }
+  },
+  "native_replay": {
+    "OpenBind": {
+      "n": 660,
+      "max_abs_by_arm": {
+        "2d": 0.0,
+        "real": 6.41361372899496e-08,
+        "shuffled": 6.26472305143011e-08,
+        "pocket": 5.942278225035125e-08,
+        "raw": 0.0
+      }
+    },
+    "BioLiP3_first": {
+      "n": 37,
+      "max_abs_by_arm": {
+        "2d": 0.0,
+        "real": 4.051280910744026e-08,
+        "shuffled": 7.132482515714855e-08,
+        "pocket": 5.12022406695678e-08,
+        "raw": 0.0
+      }
+    },
+    "BioLiP3_second": {
+      "n": 36,
+      "max_abs_by_arm": {
+        "2d": 0.0,
+        "real": 3.989014718541739e-08,
+        "shuffled": 6.737583468918729e-08,
+        "pocket": 4.181513002521342e-08,
+        "raw": 0.0
+      }
+    }
+  },
+  "native_scores_policy": "Native real is the fixed expert; controls reported as ablations; see NATIVE_ACCURACY_AUDIT.json.",
+  "ablation_policy": "Matched architecture ablations and controls may appear separately, never as main model results.",
+  "limitations": [
+    "Retrospective reused tests",
+    "No independently validated superiority",
+    "Joint cross-source training differs from published protocols; exact entity quarantine only",
+    "Full raw-input portability not established for GenSPARC/native"
+  ],
+  "native_accuracy_audit_sha": "39ac71c449c5eacb94edbd295be69489a5f92bb83c0d016f84b159ba725f0cdb"
+}

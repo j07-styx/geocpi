@@ -1,0 +1,163 @@
+{
+  "scope": "Retrospective paired comparison, fixed consolidated checkpoint. Different joint-training protocol, no matched-training superiority claim. 5000 paired crossed protein/scaffold cluster draws, unadjusted.",
+  "checkpoint_sha": "b30fd7f5054ea6352d53c2dc854ce0af9cd7d163970c5c4b4b0b7591772d97f4",
+  "script_sha": "920a929e07d9a08e0a522ab240c5a1c7ddbb2c0c033b8977bbb54d6ec86e7256",
+  "results": {
+    "davis": {
+      "n": 1339,
+      "unified": {
+        "RMSE": 0.6216357600164232,
+        "MSE": 0.3864310181311961,
+        "MAE": 0.38239617939826587,
+        "CI": 0.6052386666051348,
+        "macro_RMSE": 0.5396693655440755
+      },
+      "comparisons": {
+        "archived_perceiver": {
+          "metrics": {
+            "RMSE": 0.6827566837230846,
+            "MSE": 0.46615668916854425,
+            "MAE": 0.40847086283232936,
+            "CI": 0.5048321719199471,
+            "macro_RMSE": 0.5958128461760064
+          },
+          "paired": {
+            "n_requested_draws": 5000,
+            "n_valid_draws": 5000,
+            "n_empty_draws": 0,
+            "fixed_bootstrap_seed": 2931,
+            "bootstrap_unit": "crossed_protein_groups_and_chemical_scaffold_groups",
+            "n_protein_groups": 49,
+            "n_compound_groups": 13,
+            "delta_sign": "DynaCPI - original PerceiverCPI, negative favors DynaCPI",
+            "macro_delta_95pct_interval": [
+              -0.11598700451436511,
+              0.008370275913349618
+            ],
+            "pooled_delta_95pct_interval": [
+              -0.11590737301145282,
+              -0.0012854913120552978
+            ],
+            "fraction_macro_resamples_dynacpi_better": 0.9608,
+            "fraction_pooled_resamples_dynacpi_better": 0.9764,
+            "interpretation": "Descriptive paired cluster uncertainty from one split, not an independent statistical confirmation."
+          }
+        },
+        "floor_matched_perceiver": {
+          "metrics": {
+            "RMSE": 0.6706244066607155,
+            "MSE": 0.44973709480903673,
+            "MAE": 0.3764701496762425,
+            "CI": 0.5045533557924531,
+            "macro_RMSE": 0.5743973903490938
+          },
+          "paired": {
+            "n_requested_draws": 5000,
+            "n_valid_draws": 5000,
+            "n_empty_draws": 0,
+            "fixed_bootstrap_seed": 2931,
+            "bootstrap_unit": "crossed_protein_groups_and_chemical_scaffold_groups",
+            "n_protein_groups": 49,
+            "n_compound_groups": 13,
+            "delta_sign": "DynaCPI - original PerceiverCPI, negative favors DynaCPI",
+            "macro_delta_95pct_interval": [
+              -0.09532926957636552,
+              0.03306409282003153
+            ],
+            "pooled_delta_95pct_interval": [
+              -0.10119373182474128,
+              0.01270962859881862
+            ],
+            "fraction_macro_resamples_dynacpi_better": 0.8612,
+            "fraction_pooled_resamples_dynacpi_better": 0.9478,
+            "interpretation": "Descriptive paired cluster uncertainty from one split, not an independent statistical confirmation."
+          }
+        }
+      }
+    },
+    "kiba": {
+      "n": 3442,
+      "unified": {
+        "RMSE": 0.7864487253933903,
+        "MSE": 0.6185015976728881,
+        "MAE": 0.5310192357328207,
+        "CI": 0.6356092542293577,
+        "macro_RMSE": 0.7562151876701283
+      },
+      "comparisons": {
+        "archived_perceiver": {
+          "metrics": {
+            "RMSE": 0.9266801880866423,
+            "MSE": 0.8587361709922948,
+            "MAE": 0.6962526269876147,
+            "CI": 0.6227792315481314,
+            "macro_RMSE": 0.8630343002612172
+          },
+          "paired": {
+            "n_requested_draws": 5000,
+            "n_valid_draws": 5000,
+            "n_empty_draws": 0,
+            "fixed_bootstrap_seed": 2931,
+            "bootstrap_unit": "crossed_protein_groups_and_chemical_scaffold_groups",
+            "n_protein_groups": 30,
+            "n_compound_groups": 186,
+            "delta_sign": "DynaCPI - original PerceiverCPI, negative favors DynaCPI",
+            "macro_delta_95pct_interval": [
+              -0.24179671849978707,
+              0.006796299020301283
+            ],
+            "pooled_delta_95pct_interval": [
+              -0.23325354126682124,
+              -0.05325705363044738
+            ],
+            "fraction_macro_resamples_dynacpi_better": 0.9694,
+            "fraction_pooled_resamples_dynacpi_better": 0.9984,
+            "interpretation": "Descriptive paired cluster uncertainty from one split, not an independent statistical confirmation."
+          }
+        }
+      }
+    },
+    "metz": {
+      "n": 1416,
+      "unified": {
+        "RMSE": 0.8797443661466401,
+        "MSE": 0.7739501497667536,
+        "MAE": 0.6779358388153761,
+        "CI": 0.626421243772601,
+        "macro_RMSE": 0.8687083102153358
+      },
+      "comparisons": {
+        "archived_perceiver": {
+          "metrics": {
+            "RMSE": 1.0187376988813124,
+            "MSE": 1.0378264991219917,
+            "MAE": 0.8114589840005346,
+            "CI": 0.605603753770066,
+            "macro_RMSE": 1.0580082833689488
+          },
+          "paired": {
+            "n_requested_draws": 5000,
+            "n_valid_draws": 5000,
+            "n_empty_draws": 0,
+            "fixed_bootstrap_seed": 2931,
+            "bootstrap_unit": "crossed_protein_groups_and_chemical_scaffold_groups",
+            "n_protein_groups": 25,
+            "n_compound_groups": 122,
+            "delta_sign": "DynaCPI - original PerceiverCPI, negative favors DynaCPI",
+            "macro_delta_95pct_interval": [
+              -0.3138954047802342,
+              -0.05977284491394527
+            ],
+            "pooled_delta_95pct_interval": [
+              -0.23936529965995088,
+              -0.04446350413609112
+            ],
+            "fraction_macro_resamples_dynacpi_better": 0.9992,
+            "fraction_pooled_resamples_dynacpi_better": 0.9978,
+            "interpretation": "Descriptive paired cluster uncertainty from one split, not an independent statistical confirmation."
+          }
+        }
+      }
+    }
+  }
+}

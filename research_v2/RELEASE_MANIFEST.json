@@ -1,0 +1,20 @@
+{
+  "status": "RESEARCH_RELEASE_CANDIDATE",
+  "checkpoint_sha": "b30fd7f5054ea6352d53c2dc854ce0af9cd7d163970c5c4b4b0b7591772d97f4",
+  "files": {
+    ".gitattributes": "56246056c21dedf1ae1a36406d391f002fa902d41aa7d1fb1bc10e1f7c4c8cea",
+    "EXTERNAL_GATE.json": "75ba89eb4dac186eebe7ac16cd7156d05f75f2de81e8bf701657d8b1cf2e7687",
+    "geofuse-cpi-v2-inference.zip": "59083aba8e6ae6a76bbd2366adbffd32385ba2fcc089e0b5a8ff5c3013012441",
+    "geofuse_native_expert.py": "7c4dabe8a087d6e43ec3a38f96205d68925e0412bd6f5eeabe940170bcc22796",
+    "geofuse_portable_kinase.py": "d483f5cecbf00710a34c2373c152121f52d6053cdef3c7492d7af62649790666",
+    "geofuse_raw_kinase.py": "6d6793511cca07425710e2aeac2022ad8554a78eafbe68fd29aa3e2585e6a5b8",
+    "KINASE_PAIRED_AUDIT.json": "bef1114af576659c3e279f64ac85bb70611a87cbff73e960b006be5a88fa54cc",
+    "NATIVE_ACCURACY_AUDIT.json": "cb04aacdafcf667a3d12e4be8cc79be2ef381d4a6c882dbb740abecfcde15b41",
+    "PAPER_RESULTS.json": "b3335e67e430d74dbfc2da2442eaa9b8c88036843b4967217d2280fb40d2dbd0",
+    "PORTABLE_KINASE_RESULT.json": "4c03c38f1a1549f83af95f4d65d5bbdff7b76bc755ab381af3670aeeee11670c",
+    "RAW_SEQUENCE_RESULT.json": "2c495d37eddf295e8d501c5209b876bbc12692aac718624daf7ee8d352d114c6",
+    "README.md": "15f04b014ca699ecc94c878bf12ac365ed54fce09c7ae28e48939bbcea0fa9e4",
+    "SHARED_REPLAY.json": "0511c3234574509a641e6ad27126db4ad5067cb449addb6b5a5e0ca686cb86cc",
+    "verify_release.py": "60f4d2a854f0d4869a990701b8dc8b702324a901164520b41e472f36f314732d"
+  }
+}

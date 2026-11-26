@@ -1,0 +1,29 @@
+{
+  "status": "PASS_PRECOMPUTED_ESM_INPUT",
+  "scope": "Portable kinase prediction from arbitrary SMILES and externally supplied ESM2-650M embeddings. Training-only anchor features, no test rows or labels required at inference. Novel compound and cold protein demo not accuracy validation. No GenSPARC or native raw input adapter yet.",
+  "checkpoint_sha": "b30fd7f5054ea6352d53c2dc854ce0af9cd7d163970c5c4b4b0b7591772d97f4",
+  "anchor_sha": "42ddd4d3af1f00f15bf96985adaaa15b821fb67fe6a5f2fddf3fa796a4773769",
+  "predictor_sha": "8e01aa972bd0e11dcb193b10ca3a61a0df9c515cbbb8aa575d311655837f7f2f",
+  "parity": {
+    "davis": 4.1889531043892703e-07,
+    "kiba": 9.536743181826068e-07,
+    "metz": 7.152557373046875e-07
+  },
+  "demo": {
+    "davis": {
+      "prediction": 5.591617804946313,
+      "compound_absent_from_dataset": true,
+      "protein_absent_from_training": true
+    },
+    "kiba": {
+      "prediction": 10.84811063017872,
+      "compound_absent_from_dataset": true,
+      "protein_absent_from_training": true
+    },
+    "metz": {
+      "prediction": 5.026014426350248,
+      "compound_absent_from_dataset": true,
+      "protein_absent_from_training": true
+    }
+  }
+}
